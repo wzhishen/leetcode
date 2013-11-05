@@ -24,7 +24,7 @@ public class Solution {
         end = end.toLowerCase();
         LinkedList<String> q = new LinkedList<String>();
         HashSet<String> visited = new HashSet<String>();
-        HashMap<String, String> backtractMap = new HashMap<String, String>();
+        HashMap<String, String> backtrackMap = new HashMap<String, String>();
         visited.add(start);
         q.add(start);
         while (!q.isEmpty()) {
@@ -32,11 +32,11 @@ public class Solution {
             for (String s : getAdjWords(w, dict)) {
                 if (!visited.contains(s)) {
                     visited.add(s);
-                    backtractMap.put(s, w);
+                    backtrackMap.put(s, w);
                     if (s.equals(end)) {
                         int cnt = 1;
-                        while (backtractMap.containsKey(s)) {
-                            s = backtractMap.get(s);
+                        while (backtrackMap.containsKey(s)) {
+                            s = backtrackMap.get(s);
                             ++cnt;
                         }
                         return cnt;

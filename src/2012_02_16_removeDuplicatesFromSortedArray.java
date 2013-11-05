@@ -8,7 +8,7 @@ public class Solution {
 
     // Your function should return length = 2, and A is now [1,2].
     
-    //Use two pointers: one points to the end of sorted array, 
+    //Use two pointers: one points to the head of sorted array, 
     //the other tries to find the first distinct element.
     public int removeDuplicates(int[] A) {
         if (A == null || A.length == 0) return 0;

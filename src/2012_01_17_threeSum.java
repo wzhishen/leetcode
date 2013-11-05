@@ -19,7 +19,6 @@ public class Solution {
         HashSet<ArrayList<Integer>> ret = new HashSet<ArrayList<Integer>>();
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < num.length - 1; ++i) {
-            map.clear();
             for (int j = i + 1; j < num.length; ++j) {
                 if (map.containsKey(num[j])) {
                     ArrayList<Integer> triple = new ArrayList<Integer>();
@@ -34,6 +33,7 @@ public class Solution {
                     map.put(target - num[j], j);
                 }
             }
+            map.clear();
         }
         return new ArrayList<ArrayList<Integer>>(ret);
     }
