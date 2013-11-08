@@ -6,7 +6,22 @@ public class Solution {
     // Your algorithm should have a linear runtime complexity. 
     // Could you implement it without using extra memory?
 
+    // O(n) time, O(1) space
     public int singleNumber(int[] A) {
+        if (A == null || A.length == 0) return -1;
+        int one = 0, two = 0, three = 0;
+        for (int n : A) {
+            two |= one & n;
+            one ^= n;
+            three = ~(one & two);
+            one &= three;
+            two &= three;
+        }
+        return one;
+    }
+    
+    // O(n) time, O(32) space
+    public int singleNumber2(int[] A) {
         if (A == null || A.length == 0) return -1;
         int ret = 0;
         int[] bitCount = new int[32];

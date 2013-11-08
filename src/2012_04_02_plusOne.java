@@ -1,7 +1,7 @@
 public class Solution {
-    // Given a number represented as an array of digits, plus one to the number.
-    
     public int[] plusOne(int[] digits) {
+        // Given a number represented as an array of digits, plus one to the number.
+        
         if (digits == null || digits.length == 0) return null;
         int carry = 0;
         for (int i = digits.length - 1; i >= 0; --i) {
@@ -24,8 +24,11 @@ public class Solution {
         if (carry > 0) {
             int[] ret = new int[digits.length + 1];
             ret[0] = 1;
-            int n = 1;
-            for (int i : digits) ret[n++] = i;
+            // Don't even need the following lines since 
+            // this case will always be 1000...000
+            // 
+            // int n = 1;
+            // for (int i : digits) ret[n++] = i;
             return ret;
         }
         return digits;
