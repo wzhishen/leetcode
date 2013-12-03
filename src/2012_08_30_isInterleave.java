@@ -23,11 +23,9 @@ public class Solution {
     private boolean isInterleaveHelper(String s1, String s2, String s3, HashMap<String, Boolean> cache) {
         String key = s1 + "#" + s2 + "#" + s3;
         if (cache.containsKey(key)) return cache.get(key);
-        if (s1.isEmpty() && s2.equals(s3)) return true;
-        else if (s2.isEmpty() && s1.equals(s3)) return true;
-        else if (s1.isEmpty() || s2.isEmpty()) return false;
-        boolean r1 = false;
-        boolean r2 = false;
+        if (s1.isEmpty() ) return s2.equals(s3);
+        else if (s2.isEmpty() ) return s1.equals(s3);
+        boolean r1 = false; boolean r2 = false;
         if (s3.charAt(0) == s1.charAt(0)) 
             r1 = isInterleaveHelper(s1.substring(1), s2, s3.substring(1), cache);
         if (s3.charAt(0) == s2.charAt(0)) 

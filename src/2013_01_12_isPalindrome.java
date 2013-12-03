@@ -21,11 +21,9 @@ public class Solution {
                 if (head > tail) return true;
             }
             while (!Character.isLetterOrDigit(s.charAt(tail))) --tail;
-            if (head <= tail) {
-                if (s.charAt(head) != s.charAt(tail)) return false;
-                ++head;
-                --tail;
-            }
+            if (s.charAt(head) != s.charAt(tail)) return false;
+            ++head;
+            --tail;
         }
         return true;
     }

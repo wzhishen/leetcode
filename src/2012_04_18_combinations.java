@@ -38,21 +38,23 @@ public class Solution {
     }
     
     // naive recursive
-    public ArrayList<ArrayList<Integer>> combineRecursive(int n, int k) {
+    public HashSet<HashSet<Integer>> combineRecursive(int n, int k) {
         if (n < 1 || k < 1) return null;
-        ArrayList<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
+        HashSet<HashSet<Integer>> ret = new HashSet<HashSet<Integer>>();
         if (k == 1) {
             for (int i = 1; i <= n; ++i) {
-                ret.add(new ArrayList<Integer>(i));
+                HashSet<Integer> r = new HashSet<Integer>();
+                r.add(i);
+                ret.add(r);
             }
             return ret;
         }
-        ArrayList<ArrayList<Integer>> last = combineRecursive(n, k - 1);
-        for (ArrayList<Integer> subset : last) {
+        HashSet<HashSet<Integer>> last = combineRecursive(n, k - 1);
+        for (HashSet<Integer> subset : last) {
             for (int i = 1; i <= n; ++i) {
-                ArrayList<Integer> newset = new ArrayList<Integer>(subset);
+                HashSet<Integer> newset = new HashSet<Integer>(subset);
                 newset.add(i);
-                if (!ret.contains(newset)) ret.add(newset);
+                if (newset.size() == k) ret.add(newset);
             }
         }
         return ret;

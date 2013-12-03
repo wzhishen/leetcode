@@ -37,16 +37,13 @@ public class Solution {
             }
         });
         ArrayList<Interval> stack = new ArrayList<Interval>();
-        stack.add(intervals.get(0));
-        for (int i = 1; i < intervals.size(); ++i) {
-            Interval interval = intervals.get(i);
-            Interval topInterval = stack.get(stack.size()-1);
-            if (interval.start > topInterval.end) {
+        for (Interval interval : intervals) {
+            if (stack.isEmpty() || interval.start > stack.get(stack.size()-1).end) {
                 stack.add(interval);
             }
             else {
-                if (interval.end > topInterval.end) {
-                    topInterval.end = interval.end;
+                if (interval.end > stack.get(stack.size()-1).end) {
+                    stack.get(stack.size()-1).end = interval.end;
                 }
             }
         }

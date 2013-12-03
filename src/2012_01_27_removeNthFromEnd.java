@@ -34,8 +34,7 @@ public class Solution {
             p1 = p1.next;
             p2 = p2.next;
         }
-        if (p2.next == p1) p2.next = null; // edge case: remove tail
-        else p2.next = p2.next.next; // normal case
+        p2.next = p2.next.next; // normal case
         return head;
     }
 }

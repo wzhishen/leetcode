@@ -45,12 +45,12 @@ public class Solution {
                 break;
             }
         }
-        for (int i = m - 1; i >= 0; --i) {
-            for (int j = n - 1; j >= 0; --j) {
+        for (int i = m - 2; i >= 0; --i) {
+            for (int j = n - 2; j >= 0; --j) {
                 if (obstacleGrid[i][j] == 1) {
                     matrix[i][j] = 0;
                 }
-                else if (i < m - 1 && j < n - 1) {
+                else {
                     matrix[i][j] = matrix[i + 1][j] + matrix[i][j + 1];
                 }
             }
