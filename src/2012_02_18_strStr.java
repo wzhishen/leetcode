@@ -3,6 +3,9 @@ public class Solution {
 
     // Returns a pointer to the first occurrence of needle in haystack, or null if needle is not part of haystack.
     
+    // brute force: O(n^2) time, O(1) space
+    // (Using *KMP algorithm* is another subtle solution with linear-time
+    // complexity.)
     public String strStr(String haystack, String needle) {
         if (haystack == null || needle == null) return null;
         if (needle.isEmpty()) return haystack;

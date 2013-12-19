@@ -17,6 +17,7 @@ public class Solution {
     // All words have the same length.
     // All words contain only lowercase alphabetic characters.
     
+    //BFS
     public int ladderLength(String start, String end, HashSet<String> dict) {
         if (start == null || end == null || dict == null) return 0;
         if (start.isEmpty() || end.isEmpty() || dict.isEmpty()) return 0;

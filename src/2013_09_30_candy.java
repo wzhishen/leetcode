@@ -28,9 +28,9 @@ public class Solution {
             if (ratings[i] > ratings[i + 1]) {
                 candy[i] = Math.max(candy[i], candy[i + 1] + 1);
             }
-            else {
-                // Do Nothing!
-            }
+            /*else {
+                Do Nothing!
+            }*/
             sum += candy[i];
         }
         return sum;

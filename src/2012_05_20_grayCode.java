@@ -16,6 +16,7 @@ public class Solution {
 
     // For now, the judge is able to judge based on one instance of gray code sequence. Sorry about that.
     
+    // math approach
     public ArrayList<Integer> grayCode(int n) {
         ArrayList<Integer> ret = new ArrayList<Integer>();
         if (n < 0) return ret;
