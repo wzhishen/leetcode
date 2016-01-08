@@ -1,5 +1,4 @@
-package num10;
-
+package solutions;
 import java.util.HashMap;
 
 /**
@@ -15,7 +14,7 @@ import java.util.HashMap;
  * Input: numbers={2, 7, 11, 15}, target=9
  * Output: index1=1, index2=2
  */
-public class TwoSum {
+public class TwoSum_001 {
     public int[] twoSum(int[] nums, int target) {
         if (nums == null) return null;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
