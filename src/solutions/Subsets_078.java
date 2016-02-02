@@ -26,7 +26,26 @@ import java.util.List;
  * ]
  */
 public class Subsets_078 {
+    // backtracking
     public List<List<Integer>> subsets(int[] nums) {
+        if (nums == null) return null;
+        Arrays.sort(nums);
+        List<List<Integer>> solutions = new ArrayList<List<Integer>>();
+        subsets(solutions, new ArrayList<Integer>(), nums, 0);
+        return solutions;
+    }
+
+    private void subsets(List<List<Integer>> solutions, List<Integer> solution, int[] nums, int index) {
+        solutions.add(new ArrayList<Integer>(solution));
+        for (int i = index; i < nums.length; ++i) {
+            solution.add(nums[i]);
+            subsets(solutions, solution, nums, i + 1);
+            solution.remove(solution.size() - 1);
+        }
+    }
+
+    // bit manipulation
+    public List<List<Integer>> subsets2(int[] nums) {
         if (nums == null) return null;
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<List<Integer>>();
