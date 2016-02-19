@@ -18,7 +18,7 @@ public class FactorialTrailingZeroes_172 {
     }
 
     // Can't handle test case n = 1808548329 which makes i overflow:
-    // i = 5^14 = 6103515625 > 2^32-1
+    // i = 5^14 = 6103515625 > (2^32-1) / 2 = 2147483647
     public int trailingZeroes2(int n) {
         int cnt = 0;
         for (int i = 5; i <= n; i *= 5) {
