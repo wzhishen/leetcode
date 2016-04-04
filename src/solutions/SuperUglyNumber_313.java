@@ -11,7 +11,7 @@ package solutions;
  * Note:
  * 1. 1 is a super ugly number for any given primes.
  * 2. The given numbers in primes are in ascending order.
- * 3. 0 < k ¡Ü 100, 0 < n ¡Ü 106, 0 < primes[i] < 1000.
+ * 3. 0 < k <= 100, 0 < n <= 106, 0 < primes[i] < 1000.
  */
 public class SuperUglyNumber_313 {
     // O(nm) time, O(n + m) space, where m = primes.length

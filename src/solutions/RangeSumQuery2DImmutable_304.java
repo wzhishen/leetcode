@@ -25,7 +25,7 @@ package solutions;
  * Note:
  * 1. You may assume that the matrix does not change.
  * 2. There are many calls to sumRegion function.
- * 3. You may assume that row1 ¡Ü row2 and col1 ¡Ü col2.
+ * 3. You may assume that row1 <= row2 and col1 <= col2.
  */
 public class RangeSumQuery2DImmutable_304 {
 

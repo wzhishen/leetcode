@@ -4,7 +4,7 @@ package solutions;
  * https://leetcode.com/problems/range-sum-query-mutable/
  *
  * Given an integer array nums, find the sum of the elements between indices i
- * and j (i ¡Ü j), inclusive.
+ * and j (i <= j), inclusive.
  * The update(i, val) function modifies nums by updating the element at index i
  * to val.
  *

@@ -4,7 +4,7 @@ package solutions;
  * https://leetcode.com/problems/range-sum-query-immutable/
  *
  * Given an integer array nums, find the sum of the elements between indices
- * i and j (i ¡Ü j), inclusive.
+ * i and j (i <= j), inclusive.
  *
  * Example:
  * Given nums = [-2, 0, 3, -5, 2, -1]

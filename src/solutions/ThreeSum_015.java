@@ -11,7 +11,7 @@ import java.util.List;
  * Find all unique triplets in the array which gives the sum of zero.
  *
  * Note:
- * 1. Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ¡Ü b ¡Ü c)
+ * 1. Elements in a triplet (a,b,c) must be in non-descending order. (ie, a <= b <= c)
  * 2. The solution set must NOT contain duplicate triplets.
  *
  * For example, given array S = {-1 0 1 2 -1 -4},

@@ -24,7 +24,7 @@ import java.util.LinkedList;
  * Therefore, return the max sliding window as [3,3,5,5,6,7].
  *
  * Note: 
- * You may assume k is always valid, ie: 1 ¡Ü k ¡Ü input array's size for
+ * You may assume k is always valid, ie: 1 <= k <= input array's size for
  * non-empty array.
  *
  * Follow up:

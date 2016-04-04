@@ -40,10 +40,10 @@ public class MergeTwoSortedLists_021 {
         ListNode n;
         if (l1.val < l2.val) {
             n = l1;
-            n.next = mergeTwoLists(l1.next, l2);
+            n.next = mergeTwoListsRecursive(l1.next, l2);
         } else {
             n = l2;
-            n.next = mergeTwoLists(l1, l2.next);
+            n.next = mergeTwoListsRecursive(l1, l2.next);
         }
         return n;
     }

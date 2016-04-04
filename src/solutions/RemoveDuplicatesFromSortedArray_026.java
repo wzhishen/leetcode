@@ -16,14 +16,13 @@ package solutions;
  */
 public class RemoveDuplicatesFromSortedArray_026 {
     public int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        int p = 0;
-        for (int i = 1; i < nums.length; ++i) {
-            if (nums[i] != nums[p]) {
-                ++p;
-                nums[p] = nums[i];
+        if (nums == null) return -1;
+        int p = 1;
+        for (int i = p; i < nums.length; ++i) {
+            if (nums[i] != nums[p - 1]) {
+                nums[p++] = nums[i];
             }
         }
-        return p + 1;
+        return p;
     }
 }

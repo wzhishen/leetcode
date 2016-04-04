@@ -25,7 +25,7 @@ import datastructure.TreeNode;
  */
 public class BinaryTreeRightSideView_199 {
     // BFS
-    public List<Integer> rightSideView2(TreeNode root) {
+    public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if (root == null) return res;
         Queue<TreeNode> q = new LinkedList<TreeNode>();
@@ -42,8 +42,8 @@ public class BinaryTreeRightSideView_199 {
         return res;
     }
 
-    //DFS
-    public List<Integer> rightSideView(TreeNode root) {
+    // DFS
+    public List<Integer> rightSideView2(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if (root == null) return res;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
