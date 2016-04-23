@@ -1,6 +1,7 @@
 package solutions;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * https://leetcode.com/problems/word-pattern/
@@ -33,6 +34,24 @@ public class WordPattern_290 {
             if (map2.containsKey(word) && !map2.get(word).equals(ch)) return false;
             map1.put(ch, word);
             map2.put(word, ch);
+        }
+        return true;
+    }
+
+    public boolean wordPattern2(String pattern, String str) {
+        if (pattern == null || str == null) return false;
+
+        String[] words = str.split(" ");
+        if (pattern.length() != words.length) return false;
+        HashMap<Character, String> map = new HashMap<Character, String>();
+        HashSet<String> set = new HashSet<String>();
+        for (int i = 0; i < pattern.length(); ++i) {
+            char ch = pattern.charAt(i);
+            String word = words[i];
+            if (map.containsKey(ch) && !map.get(ch).equals(word)) return false;
+            if (!map.containsKey(ch) && set.contains(word)) return false;
+            map.put(ch, word);
+            set.add(word);
         }
         return true;
     }

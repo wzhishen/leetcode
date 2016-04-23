@@ -8,9 +8,9 @@ public class EditDistance_072 {
      *    dp[i+1][j+1] = dp[i][j]
      *
      * if word1[i] != word2[j]:
-     *    dp[i+1][j+1] = min(dp[i][j],   // replace word1[i] with word2[j] at i in word1
-     *                       dp[i+1][j], // insert word2[j] at i+1 in word1
-     *                       dp[i][j+1]) // delete word1[i] at i in word1
+     *    dp[i+1][j+1] = 1 + min(dp[i][j],   // replace word1[i] with word2[j] at i in word1
+     *                           dp[i+1][j], // insert word2[j] at i+1 in word1
+     *                           dp[i][j+1]) // delete word1[i] at i in word1
      *
      * Ref: http://www.programcreek.com/2013/12/edit-distance-in-java/
      */

@@ -13,7 +13,7 @@ package solutions;
  * is bad. Implement a function to find the first bad version. You should minimize
  * the number of calls to the API.
  */
-public class FirstBadVersion_278 {
+public class FirstBadVersion_278 /* extends VersionControl */ {
     /* The isBadVersion API is defined in the parent class VersionControl.
        boolean isBadVersion(int version); */
     public int firstBadVersion(int n) {
@@ -29,8 +29,8 @@ public class FirstBadVersion_278 {
         return start;
     }
 
+    /* in class VersionControl */
     private boolean isBadVersion(int n) {
-        // not implemented
-        return false;
+        return false; // not implemented
     }
 }
