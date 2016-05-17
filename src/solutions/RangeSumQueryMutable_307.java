@@ -20,19 +20,69 @@ package solutions;
  * distributed evenly.
  */
 public class RangeSumQueryMutable_307 {
-
+    /*
+     * Use a binary indexed tree (Fenwick tree).
+     *
+     * build: O(n log n) time
+     * update: O(log n) time
+     * sumRange: O(log n) time
+     *
+     * Ref:
+     * https://en.wikipedia.org/wiki/Fenwick_tree
+     * https://www.hrwhisper.me/binary-indexed-tree-fenwick-tree/
+     */
     public class NumArray {
-        /*
-         * Use a segment tree
-         *
-         * build: T(n) = 2T(n/2) + C => T(n) = O(n^log2) = O(n) time
-         * update: O(log n) time
-         * sumRange: O(log n) time
-         *
-         * Reference:
-         * https://leetcode.com/discuss/71450/java-segmeng-tree-solution-with-explaination
-         * http://www.cnblogs.com/Liok3187/p/4978027.html
-         */
+        private int[] tree;
+        private int[] nums;
+
+        public NumArray(int[] nums) {
+            if (nums == null) return;
+
+            this.nums = nums;
+            tree = new int[nums.length + 1];
+            for (int i = 0; i < nums.length; ++i) add(i, nums[i]);
+        }
+
+        // get sum for nums[0..k]
+        private int sum(int k) {
+            int res = 0;
+            // BIT index is 1 based
+            for (int i = k + 1; i > 0; i -= i & -i) {
+                res += tree[i];
+            }
+            return res;
+        }
+
+        // add value to the tree
+        private void add(int k, int val) {
+            // BIT index is 1 based
+            for (int i = k + 1; i < tree.length; i += i & -i) {
+                tree[i] += val;
+            }
+        }
+
+        public int sumRange(int i, int j) {
+            return sum(j) - sum(i - 1);
+        }
+
+        public void update(int i, int val) {
+            add(i, val - nums[i]);
+            nums[i] = val;
+        }
+    }
+
+    /*
+     * Use a segment tree
+     *
+     * build: T(n) = 2T(n/2) + C => T(n) = O(n^log2) = O(n) time
+     * update: O(log n) time
+     * sumRange: O(log n) time
+     *
+     * Ref:
+     * https://leetcode.com/discuss/71450/java-segmeng-tree-solution-with-explaination
+     * http://www.cnblogs.com/Liok3187/p/4978027.html
+     */
+    public class NumArray2 {
         private class TreeNode {
             int low = 0, high = 0, sum = 0;
             TreeNode left = null, right = null;
@@ -87,7 +137,7 @@ public class RangeSumQueryMutable_307 {
             }
         }
 
-        public NumArray(int[] nums) {
+        public NumArray2(int[] nums) {
             if (nums == null || nums.length == 0) return;
             root = build(nums, 0, nums.length - 1);
         }
