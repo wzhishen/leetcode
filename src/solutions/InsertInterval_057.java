@@ -24,9 +24,9 @@ import datastructure.Interval;
 public class InsertInterval_057 {
     // O(n) time, O(n) space
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        if (newInterval == null || intervals == null) return intervals;
+
         List<Interval> result = new ArrayList<Interval>();
-        if (intervals == null) return result;
-        if (newInterval == null) return intervals;
         for (Interval interval : intervals) {
             if (interval.end < newInterval.start) {
                 result.add(interval);

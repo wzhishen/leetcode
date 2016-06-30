@@ -1,6 +1,5 @@
 package solutions;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class WordLadderII_126 {
         Queue<String> q = new LinkedList<String>();
         HashMap<String, Integer> distance = new HashMap<String, Integer>();
         HashMap<String, List<String>> backtrack = new HashMap<String, List<String>>();
-        List<List<String>> result = new ArrayList<List<String>>();
+        List<List<String>> result = new LinkedList<List<String>>();
         q.add(beginWord);
         distance.put(beginWord, 0);
         while (!q.isEmpty()) {
@@ -47,20 +46,20 @@ public class WordLadderII_126 {
                     q.add(next);
                 }
                 if (!backtrack.containsKey(next)) {
-                    backtrack.put(next, new ArrayList<String>());
+                    backtrack.put(next, new LinkedList<String>());
                 }
                 backtrack.get(next).add(curr);
             }
         }
-        buildResult(endWord, beginWord, new ArrayList<String>(), result, distance, backtrack);
+        buildResult(endWord, beginWord, new LinkedList<String>(), result, distance, backtrack);
         return result;
     }
 
-    private void buildResult(String curr, String begin, ArrayList<String> path, List<List<String>> result,
+    private void buildResult(String curr, String begin, LinkedList<String> path, List<List<String>> result,
             HashMap<String, Integer> distance, HashMap<String, List<String>> backtrack) {
         path.add(0, curr);
         if (curr.equals(begin)) {
-            result.add(new ArrayList<String>(path));
+            result.add(new LinkedList<String>(path));
         } else {
             if (backtrack.containsKey(curr)) {
                 for (String prev : backtrack.get(curr)) {
@@ -74,7 +73,7 @@ public class WordLadderII_126 {
     }
 
     private List<String> expand(String word, Set<String> wordList) {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new LinkedList<String>();
         char[] chars = word.toCharArray();
         for (int i = 0; i < chars.length; ++i) {
             char old = chars[i];

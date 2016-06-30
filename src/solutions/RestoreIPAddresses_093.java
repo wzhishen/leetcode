@@ -18,6 +18,8 @@ public class RestoreIPAddresses_093 {
      * A valid IP address contains 4 blocks, each ranging from 0 to 255.
      * A block can't start with a 0 if it's not 0.
      */
+
+    // backtracking
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<String>();
         if (s == null || s.length() < 4 || s.length() > 12) return result;
@@ -41,11 +43,39 @@ public class RestoreIPAddresses_093 {
             }
         }
     }
-   
+
     private boolean isValid(String n) {
         if (n.length() == 1) return true;
         if (n.length() == 2 && n.charAt(0) != '0') return true;
         if (n.length() == 3 && n.charAt(0) != '0' && Integer.parseInt(n) <= 255) return true;
         return false;
+    }
+
+    // iterative
+    public List<String> restoreIpAddresses2(String s) {
+        List<String> result = new ArrayList<String>();
+        if (s == null || s.length() < 4 || s.length() > 12) return result;
+
+        for (int i = 0; i < 3 && i < s.length() - 2; ++i) {
+            for (int j = i + 1; j < i + 4 && j < s.length() - 1; ++j) {
+                for (int k = j + 1; k < j + 4 && k < s.length(); ++k) {
+                    String s1 = s.substring(0, i + 1),
+                           s2 = s.substring(i + 1, j + 1),
+                           s3 = s.substring(j + 1, k + 1),
+                           s4 = s.substring(k + 1);
+                    if (isValidIp(s1) && isValidIp(s2) && isValidIp(s3) && isValidIp(s4)) {
+                        result.add(s1 + "." + s2 + "." + s3 + "." + s4);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private boolean isValidIp(String s) {
+        if (s.length() > 3 || s.isEmpty()) return false;
+        if (s.charAt(0) == '0' && s.length() > 1) return false;
+        if (Integer.parseInt(s) > 255) return false;
+        return true;
     }
 }

@@ -21,12 +21,9 @@ public class ValidPalindrome_125 {
         if (s == null || s.isEmpty()) return true;
         int left = 0, right = s.length() - 1;
         while (left < right) {
-            while(left < s.length() && !isLetterOrNum(s.charAt(left))) ++left;
-            while(right >= 0 && !isLetterOrNum(s.charAt(right))) --right;
-            if (left >= s.length() || right < 0) return true;
-            if (!equalIgnoreCase(s.charAt(left), s.charAt(right))) return false;
-            ++left;
-            --right;
+            if (!isLetterOrNum(s.charAt(left))) ++left;
+            else if (!isLetterOrNum(s.charAt(right))) --right;
+            else if (!equalIgnoreCase(s.charAt(left++), s.charAt(right--))) return false;
         }
         return true;
     }
@@ -44,9 +41,7 @@ public class ValidPalindrome_125 {
     }
 
     private boolean equalIgnoreCase(char ch1, char ch2) {
-        if (ch1 == ch2) return true;
-        if (isLetter(ch1) && isLetter(ch2) &&
-            Math.abs(ch1 - ch2) == Math.abs('a' - 'A')) return true;
-        return false;
+        return ch1 == ch2 || isLetter(ch1) && isLetter(ch2) &&
+            Math.abs(ch1 - ch2) == Math.abs('a' - 'A');
     }
 }

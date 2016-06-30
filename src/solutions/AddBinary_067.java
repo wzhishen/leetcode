@@ -15,21 +15,13 @@ public class AddBinary_067 {
         int carry = 0;
         while (i >= 0 || j >= 0 || carry != 0) {
             int sum = 0;
-            if (i >= 0) {
-                sum += a.charAt(i) - 48;
-                --i;
-            }
-            if (j >= 0) {
-                sum += b.charAt(j) - 48;
-                --j;
-            }
-            if (carry > 0) {
-                sum += carry;
-            }
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            if (j >= 0) sum += b.charAt(j--) - '0';
+            if (carry > 0) sum += carry;
             int digit = sum % 2;
             carry = sum / 2;
-            sb.insert(0, digit);
+            sb.append(digit);
         }
-        return sb.toString();
+        return sb.reverse().toString();
     }
 }

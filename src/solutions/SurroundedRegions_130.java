@@ -42,6 +42,9 @@ public class SurroundedRegions_130 {
         }
     }
 
+    private int[] dx = {-1, 0, 0, 1}, dy = {0, -1, 1, 0};
+
+    // Theoretically can do DFS but will not pass online judge's space constraint requirement
     private void fill(char[][] board, int i, int j) {
         if (board[i][j] != 'O') return;
         board[i][j] = '#';
@@ -49,23 +52,13 @@ public class SurroundedRegions_130 {
         q.add(encode(board, i, j));
         while (!q.isEmpty()) {
             int n = q.remove();
-            int r = n / board[0].length;
-            int c = n % board[0].length;
-            if (r - 1 >= 0 && board[r - 1][c] == 'O') {
-                q.add(encode(board, r - 1, c));
-                board[r-1][c] = '#';
-            }
-            if (c - 1 >= 0 && board[r][c - 1] == 'O') {
-                q.add(encode(board, r, c - 1));
-                board[r][c-1] = '#';
-            }
-            if (r + 1 < board.length && board[r + 1][c] == 'O') {
-                q.add(encode(board, r + 1, c));
-                board[r+1][c] = '#';
-            }
-            if (c + 1 < board[0].length && board[r][c + 1] == 'O') {
-                q.add(encode(board, r, c + 1));
-                board[r][c+1] = '#';
+            int r = n / board[0].length, c = n % board[0].length;
+            for (int k = 0; k < 4; ++k) {
+                int x = r + dx[k], y = c + dy[k];
+                if (x >= 0 && x < board.length && y >= 0 && y < board[0].length && board[x][y] == 'O') {
+                    board[x][y] = '#';
+                    q.add(encode(board, x, y));
+                }
             }
         }
     }

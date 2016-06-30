@@ -29,7 +29,7 @@ import datastructure.TreeNode;
  *   2
   * /
  * 1
- * Longest consecutive sequence path is 2-3,not3-2-1, so return 2.
+ * Longest consecutive sequence path is 2-3, not3-2-1, so return 2.
  */
 public class BinaryTreeLongestConsecutiveSequence_298 {
     // Ref: http://www.chenguanghe.com/binary-tree-longest-consecutive-sequence/

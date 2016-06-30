@@ -16,15 +16,16 @@ package solutions;
  */
 public class UniqueBinarySearchTrees_096 {
     /* DP recurrence:
-     * f[n] = sigma(i=0, n-1) (f[i] * f[n-1-i])
+     * f[n] = f[0]*f[n-1] + f[1]*f[n-2] + ... + f[n-2]*f[1] + f[n-1]*f[0]
+     *      = sigma(i=0, n-1) (f[i] * f[n-1-i])
      *
      * Reference:
      * http://bangbingsyb.blogspot.com/2014/11/leetcode-unique-binary-search-trees-i-ii.html
      */
     public int numTrees(int n) {
         int[] dp = new int[n + 1];
-        dp[0] = dp[1] = 1;
-        for (int i = 2; i <= n; ++i) {
+        dp[0] = 1;
+        for (int i = 1; i <= n; ++i) {
             for (int j = 0; j <= i - 1; ++j) {
                 dp[i] += dp[j] * dp[i - 1 - j];
             }

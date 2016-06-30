@@ -22,10 +22,10 @@ import java.util.List;
  * [2, 2, 3]
  */
 public class CombinationSum_039 {
+    // assumes candidates contain no duplicates
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> solutions = new ArrayList<List<Integer>>();
         if (candidates == null || candidates.length == 0) return solutions;
-        Arrays.sort(candidates);
         combinationSum(candidates, target, 0, new ArrayList<Integer>(), solutions);
         return solutions;
     }
@@ -40,7 +40,6 @@ public class CombinationSum_039 {
                 solution.add(candidates[i]);
                 combinationSum(candidates, target - candidates[i], i, solution, solutions);
                 solution.remove(solution.size() - 1);
-                while (i < candidates.length - 1 && candidates[i] == candidates[i + 1]) ++i; // ignore dups
             }
         }
     }

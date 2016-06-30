@@ -12,13 +12,13 @@ package solutions;
  * bool isMatch(const char *s, const char *p)
  * 
  * Some examples:
- * isMatch("aa","a") ¡ú false
- * isMatch("aa","aa") ¡ú true
- * isMatch("aaa","aa") ¡ú false
- * isMatch("aa", "*") ¡ú true
- * isMatch("aa", "a*") ¡ú true
- * isMatch("ab", "?*") ¡ú true
- * isMatch("aab", "c*a*b") ¡ú false
+ * isMatch("aa","a") -> false
+ * isMatch("aa","aa") -> true
+ * isMatch("aaa","aa") -> false
+ * isMatch("aa", "*") -> true
+ * isMatch("aa", "a*") -> true
+ * isMatch("ab", "?*") -> true
+ * isMatch("aab", "c*a*b") -> false
  */
 public class WildcardMatching_044 {
     /* Reference:

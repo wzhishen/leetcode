@@ -14,7 +14,27 @@ import java.util.HashSet;
  * the filled cells need to be validated.
  */
 public class ValidSudoku_036 {
+    // Ref: https://leetcode.com/discuss/23901/my-short-solution-by-c-o-n2
     public boolean isValidSudoku(char[][] board) {
+        if (board == null) return false;
+        // records for each row/col/box, if a number has been used
+        boolean[][] row = new boolean[9][9],
+                    col = new boolean[9][9],
+                    box = new boolean[9][9];
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                if (board[i][j] == '.') continue;
+                if (board[i][j] <= '0' || board[i][j] > '9') return false;
+                int num = board[i][j] - '0' - 1;
+                int k = i / 3 * 3 + j / 3;
+                if (row[i][num] || col[j][num] || box[k][num]) return false;
+                row[i][num] = col[j][num] = box[k][num] = true;
+            }
+        }
+        return true;
+    }
+
+    public boolean isValidSudoku2(char[][] board) {
         if (board == null) return false;
         HashSet<Character> set = new HashSet<Character>();
         for (int i = 0; i < 9; ++i) {

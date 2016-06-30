@@ -10,10 +10,32 @@ package solutions;
  * Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
  */
 public class TrappingRainWater_042 {
-    /*
-     * currentRainAmount = min(leftMaxHeight, rightMaxHeight) - currentHeight
+    /* Two pointers: O(n) time, O(1) space
+     * Ref: https://leetcode.com/discuss/16171/sharing-my-simple-c-code-o-n-time-o-1-space
      */
     public int trap(int[] height) {
+        if (height == null) return -1;
+        int left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0, rain = 0;
+        while (left <= right) {
+            if (height[left] <= height[right]) {
+                if (height[left] > leftMax) leftMax = height[left];
+                else rain += leftMax - height[left];
+                ++left;
+            } else {
+                if (height[right] > rightMax) rightMax = height[right];
+                else rain += rightMax - height[right];
+                --right;
+            }
+        }
+        return rain;
+    }
+
+    /* O(n) time, O(n) space
+     * Key:
+     * currentRainAmount = min(leftMaxHeight, rightMaxHeight) - currentHeight
+     */
+    public int trap2(int[] height) {
         if (height == null) return -1;
         int[] left = new int[height.length];
         int leftMax = 0;

@@ -23,13 +23,8 @@ public class StrobogrammaticNumber_246 {
     }
 
     private boolean isMatch(char a, char b) {
-        switch(a) {
-            case '0': return b == '0';
-            case '1': return b == '1';
-            case '6': return b == '9';
-            case '8': return b == '8';
-            case '9': return b == '6';
-        }
-        return false;
+        return " 01869".charAt("01896".indexOf(a) + 1) == b;
     }
+
+    // Shorter, elegant version: https://leetcode.com/discuss/50594/4-lines-in-java
 }

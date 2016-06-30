@@ -19,7 +19,32 @@ import java.util.List;
  * n - 2 instead of n - 1.
  */
 public class StrobogrammaticNumberII_247 {
+    /* Hard part is figuring out when to add 0s to both ends:
+     * we don't want 0s appear on the outermost ends (like 000,
+     * 010, 080, etc).
+     */
     public List<String> findStrobogrammatic(int n) {
+        return find(n, true);
+    }
+
+    private List<String> find(int n, boolean original) {
+        if (n == 0) return new ArrayList<String>(Arrays.asList(""));
+        if (n == 1) return new ArrayList<String>(Arrays.asList("0", "1", "8"));
+
+        List<String> res = new ArrayList<String>();
+        List<String> list = find(n - 2, false);
+        for (String num : list) {
+            if (!original) res.add("0" + num + "0");
+            res.add("1" + num + "1");
+            res.add("6" + num + "9");
+            res.add("8" + num + "8");
+            res.add("9" + num + "6");
+        }
+        return res;
+    }
+
+    // my older version
+    public List<String> findStrobogrammatic2(int n) {
         List<String> res = new ArrayList<String>();
         if (n <= 0) return res;
         if (n == 1) return Arrays.asList(new String[] {"0", "1", "8"});

@@ -14,6 +14,7 @@ import java.util.List;
  *  "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
  */
 public class GeneralizedAbbreviation_320 {
+    // O(n * 2^n) time, n = word.length()
     public List<String> generateAbbreviations(String word) {
         List<String> res = new ArrayList<String>();
         if (word == null) return res;
@@ -42,4 +43,6 @@ public class GeneralizedAbbreviation_320 {
         if (cnt > 0) sb.append(cnt);
         return sb.toString();
     }
+
+    // Can also do backtracking: https://leetcode.com/discuss/75754/java-backtracking-solution
 }

@@ -35,4 +35,6 @@ public class JumpGameII_045 {
         if (maxJump < nums.length - 1) return 0;
         return cnt;
     }
+
+    // Can also do BFS: https://leetcode.com/discuss/10588/o-n-bfs-solution
 }

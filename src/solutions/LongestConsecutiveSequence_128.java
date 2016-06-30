@@ -24,10 +24,11 @@ public class LongestConsecutiveSequence_128 {
 
         HashSet<Integer> set = new HashSet<Integer>();
         for (int n : nums) set.add(n);
-        int maxCnt = 0;
+
+        int maxCnt = 1;
         for (int n : nums) {
-            int cnt = 0;
-            int left = n, right = n + 1;
+            int cnt = 1;
+            int left = n - 1, right = n + 1;
             while (set.contains(left)) {
                 set.remove(left);
                 ++cnt;

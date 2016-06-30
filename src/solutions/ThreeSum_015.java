@@ -44,7 +44,4 @@ public class ThreeSum_015 {
         }
         return result;
     }
-    public static void main(String[]a) {
-        System.out.println(Math.abs(Integer.MIN_VALUE));
-    }
 }

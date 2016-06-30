@@ -51,8 +51,8 @@ public class ScrambleString_087 {
      * T(n) = 2[T(1) + T(n-1)] +2[T(2) + T(n-2)] + ... + 2[T(n/2) + T(n/2+1)]
      * => T(n) = 2[T(1) + T(2) + ... + T(n-1)]          ---- (A)
      *
-     * Plus 1 to both sides of formula (A):
-     * T(n+1) = 2[T(1) + T(2) + ... + T(n-1) + T(n)]    ---- (B)
+     * Shift by 1 to both sides of formula (A):
+     * T(n+1) = 2[T(2) + ... + T(n-1) + T(n)]    ---- (B)
      *
      * (B) minus (A):
      * T(n+1) - T(n) = 2[T(n) - T(1)]

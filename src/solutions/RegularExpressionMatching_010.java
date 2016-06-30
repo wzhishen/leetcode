@@ -12,13 +12,13 @@ package solutions;
  * bool isMatch(const char *s, const char *p)
  *
  * Some examples:
- * isMatch("aa","a") ¡ú false
- * isMatch("aa","aa") ¡ú true
- * isMatch("aaa","aa") ¡ú false
- * isMatch("aa", "a*") ¡ú true
- * isMatch("aa", ".*") ¡ú true
- * isMatch("ab", ".*") ¡ú true
- * isMatch("aab", "c*a*b") ¡ú true
+ * isMatch("aa","a") -> false
+ * isMatch("aa","aa") -> true
+ * isMatch("aaa","aa") -> false
+ * isMatch("aa", "a*") -> true
+ * isMatch("aa", ".*") -> true
+ * isMatch("ab", ".*") -> true
+ * isMatch("aab", "c*a*b") -> true
  */
 public class RegularExpressionMatching_010 {
     /*
@@ -38,6 +38,8 @@ public class RegularExpressionMatching_010 {
      *     dp[i][j] = dp[i][j-2]
      *     // * matches zero preceding elements
      *     // eg., "cde*" matches "cd"
+     *
+     * Notice how this problem is different from WildcardMatching_044
      *
      * Reference:
      * http://www.cnblogs.com/jdflyfly/p/3810681.html

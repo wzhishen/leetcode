@@ -9,6 +9,7 @@ package solutions;
  * You may assume that all inputs are consist of lowercase letters a-z.
  */
 public class ImplementTrie_208 {
+
     class TrieNode {
         // Initialize your data structure here.
         public TrieNode() {
@@ -43,22 +44,16 @@ public class ImplementTrie_208 {
 
         // Returns if the word is in the trie.
         public boolean search(String word) {
-            if (word == null) return false;
-            TrieNode n = root;
-            for (int i = 0; i < word.length(); ++i) {
-                char ch = word.charAt(i);
-                int index = ch - ('a' - '\0');
-                if (n.map[index] == null) {
-                    return false;
-                }
-                n = n.map[index];
-            }
-            return n.isWord;
+            return find(word, true);
         }
 
         // Returns if there is any word in the trie
         // that starts with the given prefix.
         public boolean startsWith(String prefix) {
+            return find(prefix, false);
+        }
+
+        private boolean find(String prefix, boolean checkIsWord) {
             if (prefix == null) return false;
             TrieNode n = root;
             for (int i = 0; i < prefix.length(); ++i) {
@@ -69,16 +64,7 @@ public class ImplementTrie_208 {
                 }
                  n = n.map[index];
             }
-            return hasAnyWord(n);
-        }
-
-        private boolean hasAnyWord(TrieNode n) {
-            if (n == null) return false;
-            if (n.isWord) return true;
-            for (TrieNode node : n.map) {
-                if (hasAnyWord(node)) return true;
-            }
-            return false;
+            return checkIsWord ? n.isWord : true;
         }
     }
 

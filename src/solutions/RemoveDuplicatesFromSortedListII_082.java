@@ -22,9 +22,9 @@ public class RemoveDuplicatesFromSortedListII_082 {
             while (p != null && p.val == head.next.val) {
                 p = p.next;
             }
-            if (p == head.next.next) {
+            if (p == head.next.next) { // ignore non-dups
                 head = head.next;
-            } else {
+            } else { // remove dups
                 head.next = p;
             }
         }

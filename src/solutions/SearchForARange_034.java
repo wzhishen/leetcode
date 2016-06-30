@@ -47,9 +47,13 @@ public class SearchForARange_034 {
                 low = mid + 1; // if target found, keep searching right
             }
         }
-        if (high >=0 && high < nums.length && nums[high] == target) {
+        if (high >= 0 && high < nums.length && nums[high] == target) {
             result[1] = high;
         }
         return result;
+    }
+    public static void main(String...aa) {
+        String[]a= "1,2,3,4,".split(",");
+        for (String n:a)System.out.println("*:"+n);
     }
 }

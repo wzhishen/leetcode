@@ -31,7 +31,10 @@ package solutions;
  * the border of the array. How would you address these problems?
  */
 public class GameOfLife_289 {
-    /* Use number to mark extra states.
+    /* DEAD: 0
+     * LIVE: 1
+     *
+     * Use number to mark extra states.
      * States:
      * 0: DEAD -> DEAD
      * 1: LIVE -> LIVE

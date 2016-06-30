@@ -26,25 +26,20 @@ import java.util.List;
  */
 public class GroupAnagrams_049 {
     public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<List<String>>();
+        if (strs == null) return result;
+
+        Arrays.sort(strs);
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
         for (String s : strs) {
             char[] chars = s.toCharArray();
             Arrays.sort(chars);
             String key = new String(chars);
-            if (map.containsKey(key)) {
-                map.get(key).add(s);
-            } else {
-                List<String> list = new ArrayList<String>();
-                list.add(s);
-                map.put(key, list);
-            }
+            map.putIfAbsent(key, new ArrayList<String>());
+            map.get(key).add(s);
         }
-        List<List<String>> result = new ArrayList<List<String>>();
-        for (String key : map.keySet()) {
-            List<String> list = map.get(key);
-            Collections.sort(list);
-            result.add(list);
-        }
+
+        for (String key : map.keySet()) result.add(map.get(key));
         return result;
     }
 }

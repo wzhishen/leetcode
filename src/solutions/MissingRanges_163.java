@@ -34,6 +34,8 @@ public class MissingRanges_163 {
     }
 
     private String makeRange(int low, int high) {
-        return low == high ? "" + low : "" + low + "->" + high;
+        return low == high ? "" + low : low + "->" + high;
     }
+
+    // Shorter: https://leetcode.com/discuss/86020/simple-java-code
 }

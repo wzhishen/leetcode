@@ -47,4 +47,8 @@ public class IntegerBreak_343 {
         if (n % 3 == 2) return (int) Math.pow(3, m) * 2;
         return -1;
     }
+
+    /* DP: https://leetcode.com/discuss/98143/java-dp-solution
+     * dp[i] = max(dp[i], j * dp[i-j])
+     */
 }

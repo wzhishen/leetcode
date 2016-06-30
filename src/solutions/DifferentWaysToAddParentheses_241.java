@@ -13,8 +13,8 @@ import java.util.List;
  * Example 1
  * Input: "2-1-1".
  * ((2-1)-1) = 0
- * ((2-1)-1) = 0
- * ((2-1)-1) = 0
+ * (2-(1-1)) = 2
+ * Output: [0, 2]
  *
  * Example 2
  * Input: "2*3-4*5"
@@ -43,6 +43,7 @@ public class DifferentWaysToAddParentheses_241 {
                 }
             }
         }
+        // all input chars are digits, convert them to a number
         if (res.isEmpty()) res.add(Integer.parseInt(input));
         return res;
     }

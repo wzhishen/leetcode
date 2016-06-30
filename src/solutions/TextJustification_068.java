@@ -49,8 +49,8 @@ public class TextJustification_068 {
         int s = 0;
         int charsLen = 0;
         for (int e = 0; e < words.length; ++e)  {
-            int span = charsLen + words[e].length() + (e - s);
-            if (span <= maxWidth) charsLen += words[e].length();
+            int span = charsLen + words[e].length() + (e - s); // length of words and spaces
+            if (span <= maxWidth) charsLen += words[e].length(); // length of words
             else --e;
 
             if (span > maxWidth) {
@@ -73,9 +73,9 @@ public class TextJustification_068 {
             // Key: calculate padding spaces needed in between
             int spacesNum = 1; // last line
             if (!lastLine) { // not last line
-                // calculate least amount of spaces needed
+                // calculate least amount of spaces needed for each gap
                 spacesNum = spacesLen / (e - s);
-                // assign more spaces on the left
+                // assign more spaces on the left gaps
                 if (i - s < spacesLen % (e - s)) ++spacesNum;
             }
             padSpaces(sb, spacesNum);

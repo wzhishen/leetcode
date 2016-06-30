@@ -9,7 +9,7 @@ import java.util.Queue;
  * You are given a m x n 2D grid initialized with these three possible values.
  * 1. -1 - A wall or an obstacle.
  * 2. 0 - A gate.
- * 3. INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647
+ * 3. INF - Infinity means an empty room. We use the value 2^31 - 1 = 2147483647
  * to represent INF as you may assume that the distance to a gate is less than
  * 2147483647.
  *
@@ -43,23 +43,16 @@ public class WallsAndGates_286 {
             }
         }
 
-        int step = 0;
         while (!q.isEmpty()) {
-            final int size = q.size();
-            ++step;
-            for (int n = 0; n < size; ++n) {
-                int id = q.remove();
-                int x = id / rooms[0].length;
-                int y = id % rooms[0].length;
-                for (int k = 0; k < 4; ++k) {
-                    int r = x + dx[k];
-                    int c = y + dy[k];
-                    if (r >= 0 && r < rooms.length && c >= 0 && c < rooms[0].length && rooms[r][c] != -1) {
-                        if (step < rooms[r][c]) {
-                            rooms[r][c] = step;
-                            q.add(r * rooms[0].length + c);
-                        }
-                    }
+            int id = q.remove();
+            int x = id / rooms[0].length;
+            int y = id % rooms[0].length;
+            for (int k = 0; k < 4; ++k) {
+                int r = x + dx[k];
+                int c = y + dy[k];
+                if (r >= 0 && r < rooms.length && c >= 0 && c < rooms[0].length && rooms[r][c] == Integer.MAX_VALUE) {
+                    rooms[r][c] = rooms[x][y] + 1;
+                    q.add(r * rooms[0].length + c);
                 }
             }
         }

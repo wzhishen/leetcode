@@ -27,13 +27,11 @@ public class CombinationSumIII_216 {
         return solutions;
     }
 
-    private void combinationSum3(int k, int n, int num, List<Integer> solution, List<List<Integer>> solutions) {
-        if (k < 0 || n < 0) {
-            return;
-        } else if (k == 0 && n == 0) {
+    private void combinationSum3(int k, int n, int start, List<Integer> solution, List<List<Integer>> solutions) {
+        if (k == 0 && n == 0) {
             solutions.add(new ArrayList<Integer>(solution));
         } else {
-            for (int i = num; i <= 9; ++i) {
+            for (int i = start; i <= 9; ++i) {
                 solution.add(i);
                 combinationSum3(k - 1, n - i, i + 1, solution, solutions);
                 solution.remove(solution.size() - 1);

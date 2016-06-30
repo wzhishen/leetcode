@@ -6,7 +6,7 @@ package solutions;
  * Implement int sqrt(int x).
  * Compute and return the square root of x.
  */
-public class SqrtX {
+public class SqrtX_069 {
     /*
      * Binary search: O(log n) time
      * Note: need long type to hold value for any 32-bit ints. Otherwise
@@ -24,11 +24,22 @@ public class SqrtX {
         return (int) high;
     }
 
+    // Shorter version
+    public int mySqrt2(int x) {
+        long low = 1, high = x;
+        while (low <= high) {
+            long mid = low + (high - low) / 2;
+            if (mid * mid <= x) low = mid + 1;
+            else high = mid - 1;
+        }
+        return (int) high;
+    }
+
     /*
      * Newton's iterative method: O(1) time
      * X[k+1] = (X[k] + N/X[k]) / 2 where X[0] = 1
      */
-    public int mySqrt2(int x) {
+    public int mySqrt3(int x) {
         if (x < 0) return -1;
         final int PRECISION = 20;
         double res = 1;

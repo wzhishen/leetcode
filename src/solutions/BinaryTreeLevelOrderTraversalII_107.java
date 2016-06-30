@@ -9,6 +9,7 @@ import datastructure.TreeNode;
 
 /**
  * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+ *
  * Given a binary tree, return the bottom-up level order traversal of its nodes' values.
  * (ie, from left to right, level by level from leaf to root).
  *
@@ -28,12 +29,12 @@ import datastructure.TreeNode;
  */
 public class BinaryTreeLevelOrderTraversalII_107 {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new LinkedList<List<Integer>>();
         if (root == null) return result;
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(root);
         while (!q.isEmpty()) {
-            List<Integer> level = new ArrayList<Integer>();
+            List<Integer> level = new LinkedList<Integer>();
             final int SIZE = q.size();
             for (int i = 0; i < SIZE; ++i) {
                 TreeNode n = q.remove();

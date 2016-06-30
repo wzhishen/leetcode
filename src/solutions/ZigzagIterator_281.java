@@ -30,11 +30,34 @@ import java.util.List;
  */
 @SuppressWarnings("unchecked")
 public class ZigzagIterator_281 {
+    // Ref: https://leetcode.com/discuss/63037/simple-java-solution-for-k-vector
     public class ZigzagIterator {
+        private LinkedList<Iterator<Integer>> iters;
+
+        public ZigzagIterator(List<Integer>... lists) {
+            iters = new LinkedList<Iterator<Integer>>();
+            for (List<Integer> list : lists) {
+                if (!list.isEmpty()) iters.add(list.iterator());
+            }
+        }
+
+        public int next() {
+            Iterator<Integer> p = iters.remove();
+            int val = p.next();
+            if (p.hasNext()) iters.add(p);
+            return val;
+        }
+
+        public boolean hasNext() {
+            return !iters.isEmpty();
+        }
+    }
+
+    public class ZigzagIterator_2 {
         private Iterator<Integer>[] iters;
         private int p = -1;
 
-        public ZigzagIterator(List<Integer>... lists) {
+        public ZigzagIterator_2(List<Integer>... lists) {
             iters = new Iterator[lists.length];
             for (int i = 0; i < lists.length; ++i) {
                 iters[i] = lists[i].iterator();
@@ -57,29 +80,6 @@ public class ZigzagIterator_281 {
 
         private void inc() {
             p = (p + 1) % iters.length;
-        }
-    }
-
-    // Ref: https://leetcode.com/discuss/58683/c-with-queue-compatible-with-k-vectors
-    public class ZigzagIterator_2 {
-        private LinkedList<Iterator<Integer>> iters;
-
-        public ZigzagIterator_2(List<Integer>... lists) {
-            iters = new LinkedList<Iterator<Integer>>();
-            for (List<Integer> list : lists) {
-                if (!list.isEmpty()) iters.add(list.iterator());
-            }
-        }
-
-        public int next() {
-            Iterator<Integer> p = iters.remove();
-            int val = p.next();
-            if (p.hasNext()) iters.add(p);
-            return val;
-        }
-
-        public boolean hasNext() {
-            return !iters.isEmpty();
         }
     }
 

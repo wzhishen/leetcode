@@ -1,6 +1,7 @@
 package solutions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,65 +22,34 @@ import java.util.List;
  */
 public class StrobogrammaticNumberIII_248 {
     public int strobogrammaticInRange(String low, String high) {
-        if (low == null || high == null) return -1;
-
+        List<String> res = new ArrayList<>();
+        for (int i = low.length(); i <= high.length(); ++i) res.addAll(find(i, true));
         int cnt = 0;
-        for (int i = low.length(); i <= high.length(); ++i) {
-            cnt += findStrobogrammatic(i, low, high).size();
+        for (String n : res) {
+            if (inRange(n, low, high)) ++cnt;
         }
         return cnt;
     }
 
-    final String[] first = {"0", "1", "8"};
-    final String[] second = {"11", "69", "88", "96"};
+    private List<String> find(int n, boolean original) {
+        if (n == 0) return new ArrayList<String>(Arrays.asList(""));
+        if (n == 1) return new ArrayList<String>(Arrays.asList("0", "1", "8"));
 
-    private List<String> findStrobogrammatic(int n, String low, String high) {
         List<String> res = new ArrayList<String>();
-        if (n <= 0) {
-            return res;
-        } else if (n == 1) {
-            for (String s : first) {
-                if (greaterThan(s, high)) return res; // prune to speed up
-                if (inRange(s, low, high)) res.add(s);
-            }
-        } else if (n == 2) {
-            for (String s : second) {
-                if (greaterThan(s, high)) return res; // prune to speed up
-                if (inRange(s, low, high)) res.add(s);
-            }
-        } else if ((n & 1) == 1) {
-            List<String> prev = findStrobogrammatic(n - 1, low, high);
-            for (String num : prev) {
-                String left = num.substring(0, n / 2), right = num.substring(n / 2);
-                for (String center : first) {
-                    String s = left + center + right;
-                    if (greaterThan(s, high)) return res; // prune to speed up
-                    if (inRange(s, low, high)) res.add(s);
-                }
-            }
-        } else {
-            List<String> prev = findStrobogrammatic(n - 2, low, high);
-            for (String num : prev) {
-                String left = num.substring(0, (n - 1) / 2), right = num.substring((n - 1) / 2);
-                String s = left + "00" + right;
-                if (inRange(s, low, high)) res.add(s);
-                for (String center : second) {
-                    s = left + center + right;
-                    if (greaterThan(s, high)) return res; // prune to speed up
-                    if (inRange(s, low, high)) res.add(s);
-                }
-            }
+        List<String> list = find(n - 2, false);
+        for (String num : list) {
+            if (!original) res.add("0" + num + "0");
+            res.add("1" + num + "1");
+            res.add("6" + num + "9");
+            res.add("8" + num + "8");
+            res.add("9" + num + "6");
         }
         return res;
     }
 
-    private boolean inRange(String s, String low, String high) {
-        if (s.length() == low.length() && s.compareTo(low) < 0) return false;
-        if (greaterThan(s, high)) return false;
+    private boolean inRange(String n, String low, String high) {
+        if (n.length() == low.length() && n.compareTo(low) < 0) return false;
+        if (n.length() == high.length() && n.compareTo(high) > 0) return false;
         return true;
-    }
-
-    private boolean greaterThan(String s, String high) {
-        return s.length() == high.length() && s.compareTo(high) > 0;
     }
 }

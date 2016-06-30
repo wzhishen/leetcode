@@ -26,6 +26,23 @@ import java.util.Collections;
  * 3. A faster approach is to use extra space.
  */
 public class HIndex_274 {
+    // https://en.wikipedia.org/wiki/H-index
+    // O(n) time, O(n) space
+    public int hIndex2(int[] citations) {
+        if (citations == null) return 0;
+        int n = citations.length;
+        int[] cnts = new int[n + 1];
+        for (int c : citations) {
+            ++cnts[c >= n ? n : c];
+        }
+        int paperCnt = 0;
+        for (int i = n; i >= 0; --i) {
+            paperCnt += cnts[i];
+            if (paperCnt >= i) return i;
+        }
+        return 0;
+    }
+
     // O(n log n) time, O(log n) space
     public int hIndex(int[] citations) {
         if (citations == null) return 0;
@@ -46,21 +63,5 @@ public class HIndex_274 {
             }
         }
         return low;
-    }
-
-    // O(n) time, O(n) space
-    public int hIndex2(int[] citations) {
-        if (citations == null) return 0;
-        int n = citations.length;
-        int[] cnts = new int[n + 1];
-        for (int c : citations) {
-            ++cnts[c >= n ? n : c];
-        }
-        int paperCnt = 0;
-        for (int i = n; i >= 0; --i) {
-            paperCnt += cnts[i];
-            if (paperCnt >= i) return i;
-        }
-        return 0;
     }
 }

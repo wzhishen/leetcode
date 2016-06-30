@@ -32,7 +32,7 @@ public class ImplementQueueUsingStacks_232 {
 
     // Removes the element from in front of queue.
     public void pop() {
-        shift();
+        peek();
         head.pop();
     }
 

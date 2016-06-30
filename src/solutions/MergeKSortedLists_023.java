@@ -13,9 +13,10 @@ import datastructure.ListNode;
  */
 public class MergeKSortedLists_023 {
     /*
-     * Optimal: divide and conquer.
+     * Divide and conquer.
      * Time:
      * T = 2m * n/2 + 4m * n/4 + 8m * n/8 + ... + (2^i)m * n/(2^i)
+     *   = (2^1)m * n/(2^1) + (2^2)m * n/(2^2) + (2^3)m * n/(2^3) + ... + (2^i)m * n/(2^i)
      *   = O(imn)
      * since n/(2^i) = 1 -> i = log n
      * thus T = O(imn) = O(mn log n)
@@ -41,7 +42,7 @@ public class MergeKSortedLists_023 {
     /*
      * Use a heap.
      * Time: O(mn log n)
-     * Space: O(m)
+     * Space: O(n)
      *
      * n - total number of lists
      * m - average length of each list

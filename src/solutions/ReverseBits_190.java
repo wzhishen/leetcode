@@ -15,8 +15,8 @@ package solutions;
  * (https://leetcode.com/problems/reverse-integer/)
  */
 public class ReverseBits_190 {
-    private final int[] table = {0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15};
 
+    // O(8) time
     // you need treat n as an unsigned value
     public int reverseBits(int n) {
         int r = 0;
@@ -28,7 +28,9 @@ public class ReverseBits_190 {
         }
         return r;
     }
+    private final int[] table = {0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15};
 
+    // O(32) time
     public int reverseBitsNaive(int n) {
         int r = 0;
         for (int i = 0; i < 32; ++i) {
@@ -39,6 +41,7 @@ public class ReverseBits_190 {
         return r;
     }
 
+    // O(32) time
     public int reverseBitsNaive2(int n) {
         int r = 0, cnt = 32;
         while (n != 0) {
@@ -49,4 +52,6 @@ public class ReverseBits_190 {
         }
         return r << cnt;
     }
+
+    // O(1) time: https://leetcode.com/discuss/27405/o-1-bit-operation-c-solution-8ms
 }

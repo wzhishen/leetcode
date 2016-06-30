@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * https://leetcode.com/problems/n-queens/
  *
- * The n-queens puzzle is the problem of placing n queens on an n¡Án chessboard
+ * The n-queens puzzle is the problem of placing n queens on an nï¿½ï¿½n chessboard
  * such that no two queens attack each other.
  * Given an integer n, return all distinct solutions to the n-queens puzzle.
  * Each solution contains a distinct board configuration of the n-queens' placement,
@@ -30,18 +30,18 @@ public class NQueens_051 {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> solutions = new ArrayList<List<String>>();
         if (n <= 0) return solutions;
-        placeQueens(solutions, new int[n], 0, n);
+        placeQueens(solutions, new int[n], 0);
         return solutions;
     }
 
-    private void placeQueens(List<List<String>> solutions, int[] solution, int rowNum, int n) {
-        if (rowNum == n) {
+    private void placeQueens(List<List<String>> solutions, int[] solution, int rowNum) {
+        if (rowNum == solution.length) {
             solutions.add(printQueens(solution));
         } else {
-            for (int colNum = 0; colNum < n; ++colNum) {
+            for (int colNum = 0; colNum < solution.length; ++colNum) {
                 if (canPlaceQueen(solution, rowNum, colNum)) {
                     solution[rowNum] = colNum;
-                    placeQueens(solutions, solution, rowNum + 1, n);
+                    placeQueens(solutions, solution, rowNum + 1);
                 }
             }
         }
@@ -49,9 +49,8 @@ public class NQueens_051 {
 
     private boolean canPlaceQueen(int[] solution, int rowNum, int colNum) {
         for (int row = 0; row < rowNum; ++row) {
-            int col = solution[row];
-            if (colNum == col) return false;
-            if (rowNum - row == Math.abs(colNum - col)) return false;
+            if (colNum == solution[row]) return false;
+            if (rowNum - row == Math.abs(colNum - solution[row])) return false;
         }
         return true;
     }
@@ -61,11 +60,7 @@ public class NQueens_051 {
         for (int row = 0; row < solution.length; ++row) {
             StringBuilder sb = new StringBuilder();
             for (int col = 0; col < solution.length; ++col) {
-                if (col == solution[row]) {
-                    sb.append('Q');
-                } else {
-                    sb.append('.');
-                }
+                sb.append(col == solution[row] ? 'Q' : '.');
             }
             rows.add(sb.toString());
         }

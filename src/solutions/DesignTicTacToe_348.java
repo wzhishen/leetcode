@@ -56,7 +56,7 @@ package solutions;
  *--------------------------------------------------------------------
  *
  * Follow up:
- * Could you do better than O(n2) per move() operation?
+ * Could you do better than O(n^2) per move() operation?
  *
  * Hint:
  * 1. Could you trade extra space such that move() operation can be

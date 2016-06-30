@@ -24,16 +24,12 @@ public class DecodeWays_091 {
         if (s == null || s.isEmpty()) return 0;
         int[] dp = new int[s.length()];
         for (int i = 0; i < s.length(); ++i) {
-            int ways = 0;
-            if (s.charAt(i) >= '1' && s.charAt(i) <= '9') {
-                if (i == 0) ways += 1;
-                if (i - 1 >= 0) ways += dp[i - 1];
+            if (s.charAt(i) > '0') {
+                dp[i] += i >= 1 ? dp[i - 1] : 1;
             }
-            if (i - 1 >= 0 && (s.charAt(i - 1) == '1' || s.charAt(i - 1) == '2' && s.charAt(i) <= '6')) {
-                if (i == 1) ways += 1;
-                if (i - 2 >= 0) ways += dp[i - 2];
+            if (i >= 1 && (s.charAt(i - 1) == '1' || (s.charAt(i - 1) == '2' && s.charAt(i) <= '6'))) {
+                dp[i] += i >= 2 ? dp[i - 2] : 1;
             }
-            dp[i] = ways;
         }
         return dp[dp.length - 1];
     }

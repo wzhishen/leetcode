@@ -32,7 +32,7 @@ import java.util.LinkedList;
  *
  * Hint:
  * 1. How about using a data structure such as deque (double-ended queue)?
- * 2. The queue size need not be the same as the window¡¯s size.
+ * 2. The queue size need not be the same as the window's size.
  * 3. Remove redundant elements and the queue should store only elements that
  * need to be considered.
  */

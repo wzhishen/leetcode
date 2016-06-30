@@ -17,8 +17,8 @@ public class MaximumSubarray_053 {
     /*
      * DP: O(n) time
      * recurrence:
+     * dp[i] means max sum of subarray ending with i
      * dp[i] = dp[i-1] > 0 ? dp[i-1] + nums[i] : nums[i]
-     * where dp[i] means max sum of subarray ending with i
      * maxSum = max(dp[i])
      */
     public int maxSubArray(int[] nums) {
@@ -33,6 +33,9 @@ public class MaximumSubarray_053 {
 
     /*
      * Divide and conquer:  O(n log n) time
+     * Key: the maximum subarray must exist either in left or right part,
+     * or cross the middle point.
+     *
      * See why lmmax, rmmax should start with 0:
      * http://buttercola.blogspot.com/2014/08/leetcode-maximum-subarray.html
      */

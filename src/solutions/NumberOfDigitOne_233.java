@@ -47,7 +47,7 @@ public class NumberOfDigitOne_233 {
      *
      * total number is 54 * 100, ie., left/10 * b
      *
-     * In sum, total number of 1s at current digit is:
+     * In sum, total number of 1s at current digit n is:
      * if n > 1: (left/10+1) * b
      * if n = 1: left/10 * b + right + 1
      * if n < 1: left/10 * b

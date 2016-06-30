@@ -25,4 +25,10 @@ public class RemoveLinkedListElements_203 {
         }
         return dummy.next;
     }
+
+    public ListNode removeElementsRecursive(ListNode head, int val) {
+        if (head == null) return null;
+        head.next = removeElementsRecursive(head.next, val);
+        return head.val == val ? head.next : head;
+    }
 }

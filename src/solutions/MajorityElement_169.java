@@ -4,12 +4,12 @@ package solutions;
  * https://leetcode.com/problems/majority-element/
  *
  * Given an array of size n, find the majority element. The majority element
- * is the element that appears more than ⌊ n/2⌋ times.
+ * is the element that appears more than |_n/2_| times.
  * You may assume that the array is non-empty and the majority element always
  * exist in the array.
  */
 public class MajorityElement_169 {
-    // O(n) time, O(1) space
+    // Moore Voting: O(n) time, O(1) space
     public int majorityElement(int[] nums) {
         int result = 0;
         int cnt = 0;

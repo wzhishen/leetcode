@@ -26,13 +26,8 @@ public class MeetingRooms_252 {
             }
         });
 
-        Interval last = intervals[0];
         for (int i = 1; i < intervals.length; ++i) {
-            if (intervals[i].start < last.end) {
-                return false;
-            } else {
-                last = intervals[i];
-            }
+            if (intervals[i].start < intervals[i - 1].end) return false;
         }
         return true;
     }

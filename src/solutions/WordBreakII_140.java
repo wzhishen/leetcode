@@ -21,6 +21,7 @@ public class WordBreakII_140 {
         List<String> result = new ArrayList<String>();
         if (s == null || dict == null) return result;
         // Records if S[i+1,n] can be split into valid dictionary words
+        // use this pruning to speed up
         boolean[] canBreak = new boolean[s.length()];
         for (int i = 0; i < canBreak.length; ++i) canBreak[i] = true;
         wordBreak(s, dict, 0, "", result, canBreak);

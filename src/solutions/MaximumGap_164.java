@@ -12,7 +12,14 @@ package solutions;
  */
 public class MaximumGap_164 {
     /* bucket sort: O(n) time, O(n) space
-     * Ref: http://blog.csdn.net/u012162613/article/details/41936569
+     * Ref:
+     * http://blog.csdn.net/u012162613/article/details/41936569
+     * https://en.wikipedia.org/wiki/Bucket_sort
+     *
+     * Key formulas for bucket sort:
+     * Size of each bucket: bucketLen = (max - min) / nums.length + 1;
+     * Total number of buckets: bucketNum = (max - min) / bucketLen + 1;
+     * Bucket index for number n: i = (n - min) / bucketLen;
      */
     public int maximumGap(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
@@ -42,6 +49,7 @@ public class MaximumGap_164 {
         int maxGap = 0;
         int prev = 0;
         for (int i = 1; i < buckets.length; ++i) {
+            // the first and last buckets guarantee not to be empty
             if (buckets[i] != null) {
                 // the max gap only happens across adjacent buckets
                 maxGap = Math.max(maxGap, buckets[i][0] - buckets[prev][1]);

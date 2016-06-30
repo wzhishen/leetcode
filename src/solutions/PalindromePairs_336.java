@@ -43,10 +43,10 @@ public class PalindromePairs_336 {
                 String rleft = new StringBuilder(left).reverse().toString();
                 String rright = new StringBuilder(right).reverse().toString();
                 if (isPalindrome(left) && map.containsKey(rright)) {
-                    if (map.get(rright) != i) res.add(Arrays.asList(new Integer[] {map.get(rright), i}));
+                    if (map.get(rright) != i) res.add(Arrays.asList(map.get(rright), i));
                 }
-                if (isPalindrome(right) && map.containsKey(rleft) && !right.isEmpty()) {
-                    if (map.get(rleft) != i) res.add(Arrays.asList(new Integer[] {i, map.get(rleft)}));
+                if (isPalindrome(right) && map.containsKey(rleft) && !right.isEmpty()) { // remove dups
+                    if (map.get(rleft) != i) res.add(Arrays.asList(i, map.get(rleft)));
                 }
             }
         }

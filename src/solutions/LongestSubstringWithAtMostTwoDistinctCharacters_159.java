@@ -13,32 +13,23 @@ import java.util.HashMap;
  */
 public class LongestSubstringWithAtMostTwoDistinctCharacters_159 {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
-        return lengthOfLongestSubstringKDistinct(s, 2);
-    }
-
-    private int lengthOfLongestSubstringKDistinct(String s, int k) {
         if (s == null) return 0;
 
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> map = new HashMap<>();
+        int l = 0, r = 0;
         int maxLen = 0;
-        int left = 0;
-        for (int right = 0; right < s.length(); ++right) {
-            char ch = s.charAt(right);
-            int cnt = 1;
-            if (map.containsKey(ch)) cnt += map.get(ch);
-            map.put(ch, cnt);
-            while (map.size() > k) {
-                char chl = s.charAt(left);
-                int cntl = map.get(chl);
-                --cntl;
-                ++left;
-                if (cntl == 0) {
-                    map.remove(chl);
-                } else {
-                    map.put(chl, cntl);
-                }
+        while (r < s.length()) {
+            char chr = s.charAt(r);
+            map.put(chr, map.getOrDefault(chr, 0) + 1);
+            while (map.size() > 2) {
+                char chl = s.charAt(l);
+                int cntl = map.get(chl) - 1;
+                if (cntl == 0) map.remove(chl);
+                else map.put(chl, cntl);
+                ++l;
             }
-            maxLen = Math.max(maxLen, right - left + 1);
+            maxLen = Math.max(maxLen, r - l + 1);
+            ++r;
         }
         return maxLen;
     }

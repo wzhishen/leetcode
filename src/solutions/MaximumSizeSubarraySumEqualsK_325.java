@@ -20,7 +20,7 @@ import java.util.HashMap;
  * Follow Up:
  * Can you do it in O(n) time?
  */
-public class MaximumSizeSubarraySumEqualsk_325 {
+public class MaximumSizeSubarraySumEqualsK_325 {
     public int maxSubArrayLen(int[] nums, int k) {
         if (nums == null) return 0;
 

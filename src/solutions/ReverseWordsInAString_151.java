@@ -1,5 +1,7 @@
 package solutions;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/reverse-words-in-a-string/
  *
@@ -43,13 +45,9 @@ public class ReverseWordsInAString_151 {
 
     public String reverseWords2(String s) {
         if (s == null) return null;
-        String[] words = s.split(" ");
+        String[] words = s.trim().split("\\s+");
         StringBuilder sb = new StringBuilder();
-        for (int i = words.length - 1; i >= 0; --i) {
-            String word = words[i];
-            if (!word.isEmpty()) sb.append(word).append(" ");
-        }
-        if (sb.length() != 0) sb.deleteCharAt(sb.length() - 1);
-        return sb.toString();
+        for (int i = words.length - 1; i > 0; --i) sb.append(words[i]).append(" ");
+        return sb.append(words[0]).toString();
     }
 }

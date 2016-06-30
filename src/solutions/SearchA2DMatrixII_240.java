@@ -52,14 +52,16 @@ public class SearchA2DMatrixII_240 {
         int cm = cs + (ce - cs) / 2;
         if (matrix[rm][cm] == target) {
             return true;
+        // discard bottom right section (contains bigger numbers than target)
         } else if (matrix[rm][cm] > target) {
             return search(matrix, target, rs, rm - 1, cs, cm - 1) ||
                    search(matrix, target, rs, rm - 1, cm, ce) ||
                    search(matrix, target, rm, re, cs, cm - 1);
+        // discard top left section (contains smaller numbers than target)
         } else {
-            return search(matrix, target, rm + 1, re, cs + 1, ce) ||
-                   search(matrix, target, rs, rm, cm + 1, ce) ||
-                   search(matrix, target, rm + 1, re, cs, cm);
+            return search(matrix, target, rm + 1, re, cs, cm) ||
+                   search(matrix, target, rm + 1, re, cm + 1, ce) ||
+                   search(matrix, target, rs, rm, cm + 1, ce);
         }
     }
 }

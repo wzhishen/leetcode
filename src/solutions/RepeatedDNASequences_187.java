@@ -23,7 +23,7 @@ public class RepeatedDNASequences_187 {
     /*
      * Encode A, T, C, G to other format to save space.
      * Since 4^10 = 1048576 < 2^32
-     * can use bit:
+     * Can use Integer bit:
      * 0 (00): A
      * 1 (01): T
      * 2 (10): C

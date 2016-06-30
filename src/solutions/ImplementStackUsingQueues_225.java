@@ -21,40 +21,26 @@ import java.util.LinkedList;
  * operations will be called on an empty stack).
  */
 public class ImplementStackUsingQueues_225 {
-    LinkedList<Integer> q1 = new LinkedList<Integer>();
-    LinkedList<Integer> q2 = new LinkedList<Integer>();
-
-    LinkedList<Integer> empty = q1, full = q2;
+    LinkedList<Integer> q = new LinkedList<Integer>();
 
     // Push element x onto stack.
     public void push(int x) {
-        empty.add(x);
-        while (!full.isEmpty()) {
-            empty.add(full.remove());
-        }
-        swap();
+        q.add(x);
+        for (int i = 0; i < q.size() - 1; ++i) q.add(q.remove());
     }
 
     // Removes the element on top of the stack.
     public void pop() {
-        full.remove();
+        q.remove();
     }
 
     // Get the top element.
     public int top() {
-        return full.peek();
+        return q.peek();
     }
 
     // Return whether the stack is empty.
     public boolean empty() {
-        return q1.isEmpty() && q2.isEmpty();
-    }
-
-    private void swap() {
-        if (q1.isEmpty()) {
-            empty = q1; full = q2;
-        } else {
-            empty = q2; full = q1;
-        }
+        return q.isEmpty();
     }
 }

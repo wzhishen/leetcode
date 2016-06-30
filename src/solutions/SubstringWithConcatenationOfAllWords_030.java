@@ -19,10 +19,69 @@ import java.util.List;
  * (order does not matter).
  */
 public class SubstringWithConcatenationOfAllWords_030 {
-    /* O(L*N*M) time, O(N*M) space
+    /* Two pointers:
+     * Worst case T = M * (2L/M) = O(L) time, O(N*M) space
      * L: length of string s, N: size of words, M: length of a word in words
+     *
+     * Ref:
+     * http://www.programcreek.com/2014/06/leetcode-substring-with-concatenation-of-all-words-java/
+     * http://blog.csdn.net/linhuanmars/article/details/20342851
      */
     public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> res = new ArrayList<>();
+        if (s == null || words == null) return res;
+
+        // translate words to a frequency map
+        HashMap<String, Integer> target = new HashMap<>();
+        for (String word : words) target.put(word, target.getOrDefault(word, 0) + 1);
+
+        int wordLen = words[0].length();
+        // traverse all starting points to cover all substrings
+        for (int i = 0; i < wordLen; ++i) {
+            int left = i;
+            int cnt = 0;
+            HashMap<String, Integer> curr = new HashMap<>();
+            // two pointers
+            for (int j = i; j <= s.length() - wordLen; j += wordLen) {
+                String str = s.substring(j, j + wordLen);
+                if (target.containsKey(str)) {
+                    // expand window:
+                    // add right words when possible
+                    curr.put(str, curr.getOrDefault(str, 0) + 1);
+                    ++cnt;
+                    // narrow window:
+                    // keep removing left words when violating frequency match
+                    while (curr.get(str) > target.get(str)) {
+                        String strLeft = s.substring(left, left + wordLen);
+                        curr.put(strLeft, curr.get(strLeft) - 1);
+                        --cnt;
+                        left += wordLen;
+                    }
+                    // find a solution:
+                    // remove one left word to trigger another window expansion
+                    if (cnt == words.length) {
+                        res.add(left);
+                        String strLeft = s.substring(left, left + wordLen);
+                        curr.put(strLeft, curr.get(strLeft) - 1);
+                        --cnt;
+                        left += wordLen;
+                    }
+                // non matched word found:
+                // move left to new starting point and reset state
+                } else {
+                    left = j + wordLen;
+                    cnt = 0;
+                    curr.clear();
+                }
+            }
+        }
+        return res;
+    }
+
+    /* BF: O(L*N*M) time, O(N*M) space
+     * L: length of string s, N: size of words, M: length of a word in words
+     */
+    public List<Integer> findSubstring2(String s, String[] words) {
         List<Integer> res = new ArrayList<Integer>();
         if (s == null || words == null) return res;
 
@@ -50,6 +109,4 @@ public class SubstringWithConcatenationOfAllWords_030 {
         }
         return res;
     }
-
-    // O(L) time: http://blog.csdn.net/linhuanmars/article/details/20342851
 }

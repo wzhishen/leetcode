@@ -23,6 +23,7 @@ public class FlipGameII_294 {
     /* Time complexity analysis ref:
      * http://www.meetqun.com/thread-11570-1-1.html
      * http://stackoverflow.com/questions/34254085/how-to-analyze-time-complexity-here
+     * https://leetcode.com/discuss/64291/share-my-java-backtracking-solution
      */
     public boolean canWin(String s) {
         if (s == null) return false;

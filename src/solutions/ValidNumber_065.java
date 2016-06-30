@@ -1,5 +1,19 @@
 package solutions;
 
+/**
+ * https://leetcode.com/problems/valid-number/
+ *
+ * Validate if a given string is numeric.
+ * Some examples:
+ * "0" => true
+ * " 0.1 " => true
+ * "abc" => false
+ * "1 a" => false
+ * "2e10" => true
+ *
+ * Note: It is intended for the problem statement to be ambiguous.
+ * You should gather all requirements up front before implementing one.
+ */
 public class ValidNumber_065 {
     /* Ref:
      * http://www.yanyulin.info/pages/2014/10/38958011441714.html
@@ -21,16 +35,16 @@ public class ValidNumber_065 {
             // valid num
             if (ch >= '0' && ch <= '9') {
                 num = true;
-            // valid '.': no prev '.', no prev 'e'
+            // valid '.': no prev '.'; no prev 'e'
             } else if (ch == '.') {
                 if (dot || exp) return false;
                 dot = true;
-            // valid 'e': no prev 'e', prev num and following num
+            // valid 'e': no prev 'e'; prev num and following num
             } else if (ch == 'e') {
                 if (exp || !num) return false;
                 exp = true;
                 num = false;
-            // valid +/-: leading +/-, or e+/-
+            // valid +/-: leading +/-; or e+/-
             } else if (ch == '+' || ch == '-') {
                 if (i != 0 && s.charAt(i - 1) != 'e') return false;
             // invalid char

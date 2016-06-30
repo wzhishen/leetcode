@@ -38,4 +38,18 @@ public class ShortestPalindrome_214 {
             return -1;
         }
     }
+
+    // Same idea, shorter code
+    public String shortestPalindrome2(String s) {
+        int i = 0, end = s.length() - 1, j = end;
+        char[] str = s.toCharArray();
+        while (i < j) {
+            if (str[i] == str[j]) {
+                ++i; --j;
+            } else {
+                i = 0; --end; j = end;
+            }
+        }
+        return new StringBuilder(s.substring(end + 1)).reverse().append(s).toString();
+    }
 }

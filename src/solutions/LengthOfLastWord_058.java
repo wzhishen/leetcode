@@ -16,13 +16,12 @@ package solutions;
  */
 public class LengthOfLastWord_058 {
     public int lengthOfLastWord(String s) {
+        if (s == null) return -1;
+
         int cnt = 0;
         for (int i = s.length() - 1; i >= 0; --i) {
-            if (s.charAt(i) != ' ') {
-                ++cnt;
-            } else if (s.charAt(i) == ' ' && cnt > 0) {
-                break;
-            }
+            if (s.charAt(i) != ' ') ++cnt;
+            else if (cnt > 0) break;
         }
         return cnt;
     }

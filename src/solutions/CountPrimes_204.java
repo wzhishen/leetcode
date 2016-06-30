@@ -11,9 +11,9 @@ public class CountPrimes_204 {
         boolean[] isPrime = new boolean[n];
         for (int i = 2; i < n; ++i) isPrime[i] = true;
 
-        for (int i = 2; i * i < n; ++i) {
+        for (int i = 2; i * i < n; ++i) { // optimized for: i < n
             if (!isPrime[i]) continue;
-            for (int j = i * i; j < n; j += i) {
+            for (int j = i * i; j < n; j += i) { // optimized for: int j = i + i
                 isPrime[j] = false;
             }
         }

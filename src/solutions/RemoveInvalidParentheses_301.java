@@ -25,6 +25,10 @@ public class RemoveInvalidParentheses_301 {
      * T(n) = n * C(n, n) + (n-1) * C(n, n-1) + ... + 1 * C(n, 1)
      *      = n * 2^(n-1)
      * Ref: http://tinyurl.com/hlytuhq
+     *
+     * Here I do level order traversal, but can just do naive BFS,
+     * the reason why it works is:
+     * https://leetcode.com/discuss/67842/share-my-java-bfs-solution?show=67935#c67935
      */
     public List<String> removeInvalidParentheses(String s) {
         List<String> res = new ArrayList<String>();

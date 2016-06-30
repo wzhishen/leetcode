@@ -38,8 +38,10 @@ public class LongestValidParentheses_032 {
     }
 
     /*
+     * O(n) time, O(n) space
+     *
      * DP recurrence:
-     * dp[i] denotes max length of valid substring ending at i.
+     * dp[i] denotes max length of any valid substrings ending at i.
      *
      * if s[i] == '(': dp[i] = 0 // a substring ending with '(' is always invalid
      * if s[i] == ')': j = i - dp[i-1] - 1   // this ')' might match a potential '(' at j

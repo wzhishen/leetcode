@@ -9,11 +9,11 @@ import datastructure.ListNode;
  * linked lists begins.
  *
  * For example, the following two linked lists:
- * A:          a1 ¡ú a2
- *                    \
-                      c1 ¡ú c2 ¡ú c3
- *                    /
- * B:     b1 ¡ú b2 ¡ú b3
+ * A:          a1 -> a2
+ *                     \
+                       c1 -> c2 -> c3
+ *                     /
+ * B:    b1 -> b2 -> b3
  * begin to intersect at node c1.
  *
  * Notes:
@@ -26,7 +26,21 @@ import datastructure.ListNode;
  * memory.
  */
 public class IntersectionOfTwoLinkedLists_160 {
+    // Ref: https://leetcode.com/discuss/17278/accepted-shortest-explaining-algorithm-comments-improvements
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        ListNode a = headA, b = headB;
+        while (a != null && b != null && a != b) {
+            a = a.next;
+            b = b.next;
+            if (a == b) return a;
+            if (b == null) b = headA;
+            if (a == null) a = headB;
+        }
+        return a;
+    }
+
+    public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
         ListNode pa = headA, pb = headB;
         int lenA = 0, lenB = 0;
         while (pa != null) {

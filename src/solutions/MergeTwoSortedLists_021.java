@@ -37,14 +37,12 @@ public class MergeTwoSortedLists_021 {
     public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
         if (l1 == null) return l2;
         if (l2 == null) return l1;
-        ListNode n;
         if (l1.val < l2.val) {
-            n = l1;
-            n.next = mergeTwoListsRecursive(l1.next, l2);
+            l1.next = mergeTwoListsRecursive(l1.next, l2);
+            return l1;
         } else {
-            n = l2;
-            n.next = mergeTwoListsRecursive(l1, l2.next);
+            l2.next = mergeTwoListsRecursive(l1, l2.next);
+            return l2;
         }
-        return n;
     }
 }

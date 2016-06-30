@@ -26,4 +26,13 @@ public class MoveZeroes_283 {
             }
         }
     }
+
+    public void moveZeroes2(int[] a) {
+        if (a == null) return;
+        int p = 0;
+        for (int i = 0; i < a.length; ++i) {
+            if (a[i] != 0) a[p++] = a[i];
+        }
+        for (; p < a.length; ++p) a[p] = 0;
+    }
 }

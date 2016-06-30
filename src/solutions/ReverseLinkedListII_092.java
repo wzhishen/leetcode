@@ -14,7 +14,7 @@ import datastructure.ListNode;
  *
  * Note:
  * Given m, n satisfy the following condition:
- * 1 ≤ m ≤ n ≤ length of list.
+ * 1 <= m <= n <= length of list.
  */
 public class ReverseLinkedListII_092 {
     public ListNode reverseBetween(ListNode head, int m, int n) {

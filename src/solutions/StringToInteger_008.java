@@ -35,6 +35,7 @@ public class StringToInteger_008 {
         if (str == null || str.isEmpty()) return 0;
         int s = 0;
         while (s < str.length() && str.charAt(s) == ' ') ++s;
+        if (s == str.length()) return 0;
 
         boolean isNeg = false;
         if (str.charAt(s) == '-' || str.charAt(s) == '+') {

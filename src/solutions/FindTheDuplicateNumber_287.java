@@ -21,17 +21,19 @@ public class FindTheDuplicateNumber_287 {
      */
     public int findDuplicate(int[] nums) {
         int slow = 0, fast = 0;
-        while (true) {
+        while (fast < nums.length && nums[fast] < nums.length) {
             slow = nums[slow];
             fast = nums[nums[fast]];
             if (slow == fast) break;
         }
-        slow = 0;
-        while (slow != fast) {
+        // can also identify if there's no cycle (duplicate)
+        if (fast >= nums.length || nums[fast] >= nums.length) return -1;
+        fast = 0;
+        while (fast != slow) {
             slow = nums[slow];
             fast = nums[fast];
         }
-        return slow;
+        return fast;
     }
 
     /* binary search:

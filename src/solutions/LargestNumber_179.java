@@ -26,6 +26,11 @@ public class LargestNumber_179 {
                 String s1 = String.valueOf(n1);
                 String s2 = String.valueOf(n2);
                 return (s2 + s1).compareTo(s1 + s2);
+                /* Same as:
+                 * if ((s1 + s2).compareTo(s2 + s1) > 0) return -1;
+                 * else if ((s1 + s2).compareTo(s2 + s1) == 0) return 0;
+                 * else return 1;
+                 */
             }
         });
         if (list[0] == 0) return "0";

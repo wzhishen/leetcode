@@ -52,4 +52,25 @@ public class PopulatingNextRightPointersInEachNodeII_117 {
         }
         return null;
     }
+
+    public void connect2(TreeLinkNode root) {
+        TreeLinkNode dummy = new TreeLinkNode(-1);
+        TreeLinkNode n = dummy;
+        while (root != null) {
+            if (root.left != null) {
+                n.next = root.left;
+                n = n.next;
+            }
+            if (root.right != null) {
+                n.next = root.right;
+                n = n.next;
+            }
+            root = root.next;
+            if (root == null) {
+                n = dummy;
+                root = dummy.next;
+                dummy.next = null; // to avoid infinite loop
+            }
+        }
+    }
 }

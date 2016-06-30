@@ -48,10 +48,13 @@ public class WordPattern_290 {
         for (int i = 0; i < pattern.length(); ++i) {
             char ch = pattern.charAt(i);
             String word = words[i];
-            if (map.containsKey(ch) && !map.get(ch).equals(word)) return false;
-            if (!map.containsKey(ch) && set.contains(word)) return false;
-            map.put(ch, word);
-            set.add(word);
+            if (map.containsKey(ch)) {
+                if (!map.get(ch).equals(word)) return false;
+            } else {
+                if (set.contains(word)) return false;
+                map.put(ch, word);
+                set.add(word);
+            }
         }
         return true;
     }

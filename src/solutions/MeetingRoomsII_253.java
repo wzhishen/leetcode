@@ -18,7 +18,20 @@ import datastructure.Interval;
  * return 2.
  */
 public class MeetingRoomsII_253 {
-    // Ref: https://segmentfault.com/a/1190000003894670
+    /* Greedy: O(n log n) time, O(n) space
+     *
+     * Fit as many meetings as we can into one room as long as they don't
+     * overlap; if they do, open a new room.
+     * Use a heap to track the end time of each room. For every incoming
+     * meeting, if it can be fit into the room with earliest end time (heap
+     * root), reuse that room (update heap root's end time); otherwise open
+     * a new room (push the new end time to the heap).
+     * Total room number would be the heap size.
+     *
+     * Ref:
+     * https://segmentfault.com/a/1190000003894670
+     * https://leetcode.com/discuss/50911/ac-java-solution-using-min-heap
+     */
     public int minMeetingRooms(Interval[] intervals) {
         if (intervals == null || intervals.length == 0) return 0;
 

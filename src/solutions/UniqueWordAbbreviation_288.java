@@ -35,7 +35,6 @@ import java.util.HashMap;
 public class UniqueWordAbbreviation_288 {
 
     public class ValidWordAbbr {
-        final String DUPLICATE = "DUPLICATE_VALUE";
         HashMap<String, String> map = new HashMap<String, String>();
 
         public ValidWordAbbr(String[] dictionary) {
@@ -44,7 +43,8 @@ public class UniqueWordAbbreviation_288 {
             for (String word : dictionary) {
                 String abbr = compress(word);
                 if (map.containsKey(abbr)) {
-                    if (!map.get(abbr).equals(word)) map.put(abbr, DUPLICATE);
+                    // use null to denote a duplicate
+                    if (!word.equals(map.get(abbr))) map.put(abbr, null);
                 } else {
                     map.put(abbr, word);
                 }
@@ -56,7 +56,7 @@ public class UniqueWordAbbreviation_288 {
 
             String abbr = compress(word);
             if (!map.containsKey(abbr)) return true;
-            if (map.get(abbr).equals(word)) return true;
+            if (word.equals(map.get(abbr))) return true;
             return false;
         }
 

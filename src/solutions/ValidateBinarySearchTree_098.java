@@ -24,4 +24,15 @@ public class ValidateBinarySearchTree_098 {
         return n.val > min && n.val < max &&
                isValidBST(n.left, min, n.val) && isValidBST(n.right, n.val, max);
     }
+
+    // Or can use null as sentinel instead of MAX_VALUE, MIN_VALUE
+    public boolean isValidBST2(TreeNode root) {
+        return isValidBST2(root, null, null);
+    }
+
+    private boolean isValidBST2(TreeNode n, Integer min, Integer max) {
+        if (n == null) return true;
+        return (min == null || n.val > min) && (max == null || n.val < max) &&
+               isValidBST2(n.left, min, n.val) && isValidBST2(n.right, n.val, max);
+    }
 }

@@ -15,6 +15,16 @@ package solutions;
  */
 public class MissingNumber_268 {
     public int missingNumber(int[] nums) {
+        int res = nums.length, i = 0;
+        for (int n : nums) {
+            res ^= i++;
+            res ^= n;
+        }
+        return res;
+    }
+
+    // Might overflow
+    public int missingNumber2(int[] nums) {
         int n = nums.length;
         int sum = 0;
         for (int num : nums) sum += num;

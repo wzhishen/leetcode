@@ -9,18 +9,18 @@ package solutions;
  */
 public class NQueensII_052 {
     public int totalNQueens(int n) {
-        return n <= 0 ? 0 : placeQueens(new int[n], 0, n);
+        return n <= 0 ? 0 : placeQueens(new int[n], 0);
     }
 
-    private int placeQueens(int[] solution, int rowNum, int n) {
+    private int placeQueens(int[] solution, int rowNum) {
         int cnt = 0;
-        if (rowNum == n) {
+        if (rowNum == solution.length) {
             return 1;
         } else {
-            for (int colNum = 0; colNum < n; ++colNum) {
+            for (int colNum = 0; colNum < solution.length; ++colNum) {
                 if (canPlaceQueen(solution, rowNum, colNum)) {
                     solution[rowNum] = colNum;
-                    cnt += placeQueens(solution, rowNum + 1, n);
+                    cnt += placeQueens(solution, rowNum + 1);
                 }
             }
         }
@@ -29,9 +29,8 @@ public class NQueensII_052 {
 
     private boolean canPlaceQueen(int[] solution, int rowNum, int colNum) {
         for (int row = 0; row < rowNum; ++row) {
-            int col = solution[row];
-            if (colNum == col) return false;
-            if (rowNum - row == Math.abs(colNum - col)) return false;
+            if (colNum == solution[row]) return false;
+            if (rowNum - row == Math.abs(colNum - solution[row])) return false;
         }
         return true;
     }

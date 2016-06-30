@@ -17,6 +17,12 @@ import datastructure.TreeNode;
  *  2     1         2                 3
  */
 public class UniqueBinarySearchTreesII_095 {
+    /* Recurrence:
+     * f[n] = f[0]*f[n-1] + f[1]*f[n-2] + ... + f[n-2]*f[1] + f[n-1]*f[0]
+     *      = sigma(i=0, n-1) (f[i] * f[n-1-i])
+     * Time complexity is a Catalan number: https://en.wikipedia.org/wiki/Catalan_number
+     * which asymptotically grows as 4^n/(n^1.5)
+     */
     public List<TreeNode> generateTrees(int n) {
         if (n <= 0) return new ArrayList<TreeNode>();
         return generateTrees(1, n);

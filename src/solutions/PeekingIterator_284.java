@@ -44,8 +44,8 @@ public class PeekingIterator_284 {
         // Returns the next element in the iteration without advancing the iterator.
         public Integer peek() {
             if (!peeked) {
-                peeked = true;
                 peekedValue = iter.next();
+                peeked = true;
             }
             return peekedValue;
         }

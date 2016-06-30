@@ -4,7 +4,7 @@ package solutions;
  * https://leetcode.com/problems/minimum-size-subarray-sum/
  *
  * Given an array of n positive integers and a positive integer s, find the
- * minimal length of a subarray of which the sum ¡Ý s. If there isn't one,
+ * minimal length of a subarray of which the sum >= s. If there isn't one,
  * return 0 instead.
  *
  * For example, given the array [2,3,1,2,4,3] and s = 7,
@@ -16,20 +16,17 @@ package solutions;
  */
 public class MinimumSizeSubarraySum_209 {
     // Two pointers: O(n) time
-    public int minSubArrayLen2(int s, int[] nums) {
+    public int minSubArrayLen(int s, int[] nums) {
         if (nums == null) return -1;
 
-        int low = 0, high = 0, sum = 0, minLen = Integer.MAX_VALUE;
-        while (high < nums.length) {
-            while (sum < s && high < nums.length) {
-                sum += nums[high];
-                ++high;
-            }
+        int i = 0, j = 0, sum = 0, minLen = Integer.MAX_VALUE;
+        while (j < nums.length) {
+            sum += nums[j];
             while (sum >= s) {
-                minLen = Math.min(minLen, high - low);
-                sum -= nums[low];
-                ++low;
+                minLen = Math.min(minLen, j - i + 1);
+                sum -= nums[i++];
             }
+            ++j;
         }
         return minLen == Integer.MAX_VALUE ? 0 : minLen;
     }

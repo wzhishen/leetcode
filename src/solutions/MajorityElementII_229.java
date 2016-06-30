@@ -7,13 +7,13 @@ import java.util.List;
  * https://leetcode.com/problems/majority-element-ii/
  *
  * Given an integer array of size n, find all elements that appear more than
- * ⌊ n/3⌋ times. The algorithm should run in linear time and in O(1) space.
+ * |_n/3_| times. The algorithm should run in linear time and in O(1) space.
  *
  * Hint:
  * How many majority elements could it possibly have?
  */
 public class MajorityElementII_229 {
-    // O(2*n) time, O(1) space
+    // Moore Voting: O(2*n) time, O(1) space
     public List<Integer> majorityElement(int[] nums) {
         int res1 = 0, res2 = 0;
         int cnt1 = 0, cnt2 = 0;

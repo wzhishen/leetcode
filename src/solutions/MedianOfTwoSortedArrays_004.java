@@ -23,14 +23,16 @@ public class MedianOfTwoSortedArrays_004 {
         }
     }
 
+    // 1 based
     private int findKth(int[] a1, int s1, int len1, int[] a2, int s2, int len2, int k) {
+        // let a1.length <= a2.length
         if (len1 > len2) return findKth(a2, s2, len2, a1, s1, len1, k);
 
         if (len1 == 0) return a2[s2 + k - 1];
         if (k == 1) return Math.min(a1[s1], a2[s2]);
 
-        int p1 = Math.min(k / 2, len1);
-        int p2 = k - p1;
+        int p1 = Math.min(k / 2, len1); // a1's middle count
+        int p2 = k - p1; // a2's middle count
         if (a1[s1 + p1 - 1] < a2[s2 + p2 - 1]) {
             return findKth(a1, s1 + p1, len1 - p1, a2, s2, len2, k - p1);
         } else {

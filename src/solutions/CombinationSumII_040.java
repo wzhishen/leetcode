@@ -43,7 +43,7 @@ public class CombinationSumII_040 {
                 solution.add(candidates[i]);
                 combinationSum2(candidates, target - candidates[i], i + 1, solution, solutions);
                 solution.remove(solution.size() - 1);
-                while (i < candidates.length - 1 && candidates[i] == candidates[i + 1]) ++i;
+                while (i < candidates.length - 1 && candidates[i] == candidates[i + 1]) ++i; // skip dups
             }
         }
     }

@@ -8,7 +8,7 @@ package solutions;
  * return its index.
  * The array may contain multiple peaks, in that case return the index to
  * any one of the peaks is fine.
- * You may imagine that num[-1] = num[n] = -¡Þ
+ * You may imagine that num[-1] = num[n] = -infinity
  * For example, in array [1, 2, 3, 1], 3 is a peak element and your function
  * should return the index number 2.
  *

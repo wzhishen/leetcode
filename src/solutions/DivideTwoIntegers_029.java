@@ -12,6 +12,8 @@ public class DivideTwoIntegers_029 {
      * dividend = divisor * N
      *          = divisor * (a_0*2^0 + a_1*2^1 + a_2*2^2 + ... + a_n*2^n) where a_i = 0 or 1
      * So instead of counting divisor linearly we can count it logarithmically.
+     *
+     * https://leetcode.com/discuss/38997/detailed-explained-8ms-c-solution
      */
     public int divide(int dividend, int divisor) {
         if (divisor == 0) throw new ArithmeticException("Divisor is zero.");
