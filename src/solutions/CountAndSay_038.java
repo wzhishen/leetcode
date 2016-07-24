@@ -15,23 +15,18 @@ package solutions;
  */
 public class CountAndSay_038 {
     public String countAndSay(int n) {
-        if (n <= 0) return null;
-        if (n == 1) return "1";
+        if (n <= 1) return "1";
         String s = countAndSay(n - 1);
-        char prev = s.charAt(0);
-        int cnt = 1;
         StringBuilder sb = new StringBuilder();
+        int cnt = 1;
         for (int i = 1; i < s.length(); ++i) {
-            char curr = s.charAt(i);
-            if (curr == prev) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
                 ++cnt;
             } else {
-                sb.append(cnt).append(prev);
+                sb.append(cnt).append(s.charAt(i - 1));
                 cnt = 1;
-                prev = curr;
             }
         }
-        sb.append(cnt).append(prev);
-        return sb.toString();
+        return sb.append(cnt).append(s.charAt(s.length() - 1)).toString();
     }
 }

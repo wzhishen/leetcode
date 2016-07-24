@@ -32,8 +32,8 @@ public class StrobogrammaticNumberIII_248 {
     }
 
     private List<String> find(int n, boolean original) {
-        if (n == 0) return new ArrayList<String>(Arrays.asList(""));
-        if (n == 1) return new ArrayList<String>(Arrays.asList("0", "1", "8"));
+        if (n == 0) return Arrays.asList("");
+        if (n == 1) return Arrays.asList("0", "1", "8");
 
         List<String> res = new ArrayList<String>();
         List<String> list = find(n - 2, false);

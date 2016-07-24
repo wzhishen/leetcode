@@ -27,19 +27,17 @@ public class BinaryTreeInorderTraversal_094 {
      * O(n) time, O(log n) space
      */
     public List<Integer> inorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         Stack<TreeNode> s = new Stack<TreeNode>();
 
-        TreeNode p = root;
-        while (p != null || !s.isEmpty()) {
-            if (p != null) {
-                s.push(p);
-                p = p.left;
-            } else {
-                p = s.pop();
-                res.add(p.val);
-                p = p.right;
+        while (root != null || !s.isEmpty()) {
+            while (root != null) {
+                s.push(root);
+                root = root.left;
             }
+            root = s.pop();
+            res.add(root.val);
+            root = root.right;
         }
         return res;
     }

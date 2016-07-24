@@ -18,16 +18,16 @@ public class MajorityElementII_229 {
         int res1 = 0, res2 = 0;
         int cnt1 = 0, cnt2 = 0;
         for (int n : nums) {
-            if (cnt1 == 0) {
+            if (n == res1) {
+                ++cnt1;
+            } else if (n == res2) {
+                ++cnt2;
+            } else if (cnt1 == 0) {
                 res1 = n;
                 cnt1 = 1;
-            } else if (n == res1) {
-                ++cnt1;
             } else if (cnt2 == 0) {
                 res2 = n;
                 cnt2 = 1;
-            } else if (n == res2) {
-                ++cnt2;
             } else {
                 --cnt1;
                 --cnt2;

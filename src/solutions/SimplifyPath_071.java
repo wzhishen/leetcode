@@ -32,11 +32,8 @@ public class SimplifyPath_071 {
                 s.push(dir);
             }
         }
-        if (s.isEmpty()) return "/";
-        String res = "";
-        while (!s.isEmpty()) {
-            res = "/" + s.pop() + res;
-        }
-        return res;
+        StringBuilder sb = new StringBuilder();
+        while (!s.isEmpty()) sb.insert(0, s.pop()).insert(0, '/');
+        return sb.length() == 0 ? "/" : sb.toString();
     }
 }

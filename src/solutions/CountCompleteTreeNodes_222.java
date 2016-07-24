@@ -17,19 +17,13 @@ public class CountCompleteTreeNodes_222 {
      */
     public int countNodes(TreeNode root) {
         if (root == null) return 0;
-        int leftHeight = 0, rightHeight = 0;
-        TreeNode n = root;
-        while (n != null) {
-            n = n.left; ++leftHeight;
+        TreeNode l = root, r = root;
+        int h = 0;
+        while (l != null && r != null) {
+            l = l.left; r = r.right;
+            ++h;
         }
-        n = root;
-        while (n != null) {
-            n = n.right; ++rightHeight;
-        }
-        if (leftHeight == rightHeight) {
-            return (1 << leftHeight) - 1; // # of nodes of a full binary tree is 2^h-1
-        } else {
-            return countNodes(root.left) + countNodes(root.right) + 1;
-        }
+        if (l == null && r == null) return (1 << h) - 1; // # of nodes of a full binary tree is 2^h-1
+        else return 1 + countNodes(root.left) + countNodes(root.right);
     }
 }

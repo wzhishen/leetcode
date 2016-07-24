@@ -29,30 +29,27 @@ import java.util.Queue;
  *   0  -1   3   4
  */
 public class WallsAndGates_286 {
-    private int[] dx = {-1, 0, 0, 1};
-    private int[] dy = {0, -1, 1, 0};
+    private int[] dx = {-1, 0, 0, 1}, dy = {0, -1, 1, 0};
 
     public void wallsAndGates(int[][] rooms) {
-        if (rooms == null) return;
+        if (rooms == null || rooms.length == 0 || rooms[0].length == 0) return;
 
+        int m = rooms.length, n = rooms[0].length;
         Queue<Integer> q = new LinkedList<Integer>();
-
-        for (int i = 0; i < rooms.length; ++i) {
-            for (int j = 0; j < rooms[0].length; ++j) {
-                if (rooms[i][j] == 0) q.add(i * rooms[0].length + j);
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (rooms[i][j] == 0) q.add(i * n + j);
             }
         }
 
         while (!q.isEmpty()) {
             int id = q.remove();
-            int x = id / rooms[0].length;
-            int y = id % rooms[0].length;
+            int i = id / n, j = id % n;
             for (int k = 0; k < 4; ++k) {
-                int r = x + dx[k];
-                int c = y + dy[k];
-                if (r >= 0 && r < rooms.length && c >= 0 && c < rooms[0].length && rooms[r][c] == Integer.MAX_VALUE) {
-                    rooms[r][c] = rooms[x][y] + 1;
-                    q.add(r * rooms[0].length + c);
+                int x = i + dx[k], y = j + dy[k];
+                if (x >= 0 && y >= 0 && x < m && y < n && rooms[x][y] == Integer.MAX_VALUE) {
+                    rooms[x][y] = rooms[i][j] + 1;
+                    q.add(x * n + y);
                 }
             }
         }

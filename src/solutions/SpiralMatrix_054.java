@@ -23,24 +23,24 @@ public class SpiralMatrix_054 {
      * https://leetcode.com/discuss/12228/super-simple-and-easy-to-understand-solution
      */
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> res = new ArrayList<Integer>();
-        if (matrix == null || matrix.length == 0) return res;
+        List<Integer> res = new ArrayList<>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return res;
 
-        int rowLow = 0, rowHigh = matrix.length - 1, colLow = 0, colHigh = matrix[0].length - 1;
-        while (rowLow <= rowHigh && colLow <= colHigh) {
-            for (int i = colLow; i <= colHigh; ++i) res.add(matrix[rowLow][i]);
-            ++rowLow;
-            if (rowLow > rowHigh) break;
+        int m = matrix.length, n = matrix[0].length;
+        int rowStart = 0, rowEnd = m - 1, colStart = 0, colEnd = n - 1;
 
-            for (int i = rowLow; i <= rowHigh; ++i) res.add(matrix[i][colHigh]);
-            --colHigh;
-            if (colLow > colHigh) break;
+        while (rowStart <= rowEnd && colStart <= colEnd) {
+            for (int c = colStart; c <= colEnd; ++c) res.add(matrix[rowStart][c]);
+            if (++rowStart > rowEnd) return res;
 
-            for (int i = colHigh; i >= colLow; --i) res.add(matrix[rowHigh][i]);
-            --rowHigh;
+            for (int r = rowStart; r <= rowEnd; ++r) res.add(matrix[r][colEnd]);
+            if (--colEnd < colStart) return res;
 
-            for (int i = rowHigh; i >= rowLow; --i) res.add(matrix[i][colLow]);
-            ++colLow;
+            for (int c = colEnd; c >= colStart; --c) res.add(matrix[rowEnd][c]);
+            --rowEnd;
+
+            for (int r = rowEnd; r >= rowStart; --r) res.add(matrix[r][colStart]);
+            ++colStart;
         }
         return res;
     }

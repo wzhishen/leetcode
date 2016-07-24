@@ -28,8 +28,8 @@ public class ShortestWordDistanceIII_245 {
             // handle same word
             if (word1.equals(word2)) {
                 if (words[i].equals(word1)) {
-                    if (p1 < p2) p1 = i;
-                    else p2 = i;
+                    p2 = p1;
+                    p1 = i;
                 }
             // normal case
             } else {

@@ -38,24 +38,18 @@ public class SortColors_075 {
      */
     public void sortColors(int[] nums) {
         if (nums == null) return;
-        int left = 0, curr = 0, right = nums.length - 1;
-        while (curr <= right) {
-            if (nums[curr] == 1) {
-                ++curr;
-            } else if (nums[curr] == 0) {
-                swap(nums, curr, left);
-                ++curr;
-                ++left;
-            } else if (nums[curr] == 2) {
-                swap(nums, curr, right);
-                --right;
-            }
+        int i = 0, j = 0, k = nums.length - 1;
+        while (j <= k) {
+            if (nums[j] == 1) ++j;
+            else if (nums[j] == 0) swap(nums, i++, j++);
+            else swap(nums, j, k--);
         }
     }
 
     private void swap(int[] nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
+        if (i == j) return;
+        nums[i] ^= nums[j];
+        nums[j] ^= nums[i];
+        nums[i] ^= nums[j];
     }
 }

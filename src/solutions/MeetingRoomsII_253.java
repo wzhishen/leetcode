@@ -33,25 +33,19 @@ public class MeetingRoomsII_253 {
      * https://leetcode.com/discuss/50911/ac-java-solution-using-min-heap
      */
     public int minMeetingRooms(Interval[] intervals) {
-        if (intervals == null || intervals.length == 0) return 0;
+        if (intervals == null) return 0;
 
         Arrays.sort(intervals, new Comparator<Interval>() {
-            @Override public int compare(Interval i1, Interval i2) {
-                return ((Integer) i1.start).compareTo(i2.start);
+            public int compare(Interval i1, Interval i2) {
+                return i1.start - i2.start;
             }
         });
 
-        int cnt = 1;
         PriorityQueue<Integer> q = new PriorityQueue<Integer>();
-        q.offer(intervals[0].end);
-        for (int i = 1; i < intervals.length; ++i) {
-            if (q.peek() <= intervals[i].start) {
-                q.poll();
-            } else {
-                ++cnt;
-            }
-            q.offer(intervals[i].end);
+        for (Interval i : intervals) {
+            if (!q.isEmpty() && i.start >= q.peek()) q.poll();
+            q.offer(i.end);
         }
-        return cnt;
+        return q.size();
     }
 }

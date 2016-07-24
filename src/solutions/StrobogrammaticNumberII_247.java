@@ -24,47 +24,21 @@ public class StrobogrammaticNumberII_247 {
      * 010, 080, etc).
      */
     public List<String> findStrobogrammatic(int n) {
-        return find(n, true);
+        return findStrobogrammatic(n, true);
     }
 
-    private List<String> find(int n, boolean original) {
-        if (n == 0) return new ArrayList<String>(Arrays.asList(""));
-        if (n == 1) return new ArrayList<String>(Arrays.asList("0", "1", "8"));
+    private List<String> findStrobogrammatic(int n, boolean original) {
+        if (n <= 0) return Arrays.asList("");
+        if (n == 1) return Arrays.asList("0", "1", "8");
 
-        List<String> res = new ArrayList<String>();
-        List<String> list = find(n - 2, false);
-        for (String num : list) {
-            if (!original) res.add("0" + num + "0");
-            res.add("1" + num + "1");
-            res.add("6" + num + "9");
-            res.add("8" + num + "8");
-            res.add("9" + num + "6");
-        }
-        return res;
-    }
-
-    // my older version
-    public List<String> findStrobogrammatic2(int n) {
-        List<String> res = new ArrayList<String>();
-        if (n <= 0) return res;
-        if (n == 1) return Arrays.asList(new String[] {"0", "1", "8"});
-        if (n == 2) return Arrays.asList(new String[] {"11", "88", "69", "96"});
-        if ((n & 1) == 1) {
-            List<String> prev = findStrobogrammatic(n - 1);
-            for (String num : prev) {
-                res.add(num.substring(0, n / 2) + "0" + num.substring(n / 2));
-                res.add(num.substring(0, n / 2) + "1" + num.substring(n / 2));
-                res.add(num.substring(0, n / 2) + "8" + num.substring(n / 2));
-            }
-        } else {
-            List<String> prev = findStrobogrammatic(n - 2);
-            for (String num : prev) {
-                res.add(num.substring(0, (n - 1) / 2) + "00" + num.substring((n - 1) / 2));
-                res.add(num.substring(0, (n - 1) / 2) + "11" + num.substring((n - 1) / 2));
-                res.add(num.substring(0, (n - 1) / 2) + "88" + num.substring((n - 1) / 2));
-                res.add(num.substring(0, (n - 1) / 2) + "69" + num.substring((n - 1) / 2));
-                res.add(num.substring(0, (n - 1) / 2) + "96" + num.substring((n - 1) / 2));
-            }
+        List<String> prev = findStrobogrammatic(n - 2, false);
+        List<String> res = new ArrayList<>();
+        for (String p : prev) {
+            if (!original) res.add("0" + p + "0");
+            res.add("1" + p + "1");
+            res.add("6" + p + "9");
+            res.add("8" + p + "8");
+            res.add("9" + p + "6");
         }
         return res;
     }

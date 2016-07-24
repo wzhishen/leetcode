@@ -12,7 +12,7 @@ import datastructure.Point;
  * (Plane might contain duplicate points.)
  */
 public class MaxPointsOnALine_149 {
- // Beware that floating point types have numeric limits - in this version
+    // Beware that floating point types have numeric limits - in this version
     // we didn't address it.
     public static int maxPoints(Point[] points) {
         if (points == null) return 0;
@@ -49,7 +49,7 @@ public class MaxPointsOnALine_149 {
         return maxCnt;
     }
 
-    // This version considers and addresses the limits of floating point types.
+    // This version considers and addresses the limit of floating point types.
     // Ref: https://github.com/wzhishen/cracking-the-coding-interview/blob/master/src/chap07/Q6.java
     public int maxPoints2(Point[] points) {
         if (points == null) return 0;

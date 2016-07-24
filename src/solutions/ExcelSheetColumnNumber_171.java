@@ -18,13 +18,10 @@ package solutions;
  */
 public class ExcelSheetColumnNumber_171 {
     public int titleToNumber(String s) {
-        if (s == null) return -1;
-        int sum = 0, base = 1;
-        for (int i = s.length() - 1; i >= 0; --i) {
-            int num = s.charAt(i) - 'A' + 1;
-            sum += num * base;
-            base *= 26;
+        int res = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            res = res * 26 + (s.charAt(i) - 'A' + 1);
         }
-        return sum;
+        return res;
     }
 }

@@ -27,7 +27,7 @@ public class IntegerToEnglishWords_273 {
         String result = "";
         int i = 0;
         while (num > 0) {
-            String words = HundredToWords(num % 1000);
+            String words = hundredToWords(num % 1000);
             if (!words.isEmpty()) {
                 result = words + bigs[i] + " " + result;
             }
@@ -37,7 +37,7 @@ public class IntegerToEnglishWords_273 {
         return result.trim();
     }
 
-    private String HundredToWords(int n) {
+    private String hundredToWords(int n) {
         String result = "";
         if (n >= 100) {
             result += digits[n / 100 - 1] + " Hundred ";

@@ -31,8 +31,11 @@ public class MedianOfTwoSortedArrays_004 {
         if (len1 == 0) return a2[s2 + k - 1];
         if (k == 1) return Math.min(a1[s1], a2[s2]);
 
-        int p1 = Math.min(k / 2, len1); // a1's middle count
-        int p2 = k - p1; // a2's middle count
+        int p1 = Math.min(k / 2, len1); // middle count for a1
+        int p2 = k - p1; // middle count for a2
+
+        // a1[s1 + p1 - 1]: the k/2 th element in a1
+        // a2[s2 + p2 - 1]: the k/2 th element in a2
         if (a1[s1 + p1 - 1] < a2[s2 + p2 - 1]) {
             return findKth(a1, s1 + p1, len1 - p1, a2, s2, len2, k - p1);
         } else {

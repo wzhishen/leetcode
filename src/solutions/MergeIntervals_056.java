@@ -22,9 +22,8 @@ public class MergeIntervals_056 {
         LinkedList<Interval> result = new LinkedList<Interval>();
         if (intervals == null) return result;
         Collections.sort(intervals, new Comparator<Interval>() {
-            @Override
             public int compare(Interval i1, Interval i2) {
-                return ((Integer) i1.start).compareTo(i2.start);
+                return i1.start - i2.start;
             }
         });
 

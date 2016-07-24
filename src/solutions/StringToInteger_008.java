@@ -17,7 +17,7 @@ package solutions;
  * the first non-whitespace character is found. Then, starting from this character,
  * takes an optional initial plus or minus sign followed by as many numerical
  * digits as possible, and interprets them as a numerical value.
- 
+ *
  * 2. The string can contain additional characters after those that form the
  * integral number, which are ignored and have no effect on the behavior of this
  * function.

@@ -30,29 +30,23 @@ public class ShortestWordDistanceII_244 {
         private HashMap<String, ArrayList<Integer>> map;
 
         public WordDistance(String[] words) {
-            map = new HashMap<String, ArrayList<Integer>>();
             if (words == null) return;
-
+            map = new HashMap<>();
             for (int i = 0; i < words.length; ++i) {
-                ArrayList<Integer> list = map.containsKey(words[i]) ?
-                    map.get(words[i]) : new ArrayList<Integer>();
-                list.add(i);
-                map.put(words[i], list);
+                map.putIfAbsent(words[i], new ArrayList<Integer>());
+                map.get(words[i]).add(i);
             }
         }
 
         public int shortest(String word1, String word2) {
             if (word1 == null || word2 == null) return -1;
-
-            int minDist = Integer.MAX_VALUE;
             ArrayList<Integer> list1 = map.get(word1);
             ArrayList<Integer> list2 = map.get(word2);
-            int i = 0, j = 0;
+            int i = 0, j = 0, minDist = Integer.MAX_VALUE;
             while (i < list1.size() && j < list2.size()) {
-                int pos1 = list1.get(i);
-                int pos2 = list2.get(j);
-                minDist = Math.min(minDist, Math.abs(pos1 - pos2));
-                if (pos1 < pos2) ++i;
+                int p1 = list1.get(i), p2 = list2.get(j);
+                minDist = Math.min(minDist, Math.abs(p1 - p2));
+                if (p1 < p2) ++i;
                 else ++j;
             }
             return minDist;

@@ -10,7 +10,12 @@ public class PowerOfTwo_231 {
         return n > 0 && (n & (n - 1)) == 0;
     }
 
+    // check low bit
     public boolean isPowerOfTwo2(int n) {
+        return n > 0 && (n & -n) == n;
+    }
+
+    public boolean isPowerOfTwo3(int n) {
         return n > 0 && Math.pow(2, 30) % n == 0;
     }
 }
