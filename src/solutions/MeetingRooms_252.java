@@ -1,7 +1,6 @@
 package solutions;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 import datastructure.Interval;
 
@@ -20,11 +19,7 @@ public class MeetingRooms_252 {
     public boolean canAttendMeetings(Interval[] intervals) {
         if (intervals == null || intervals.length == 0) return true;
 
-        Arrays.sort(intervals, new Comparator<Interval>() {
-            @Override public int compare(Interval i1, Interval i2) {
-                return ((Integer) i1.start).compareTo(i2.start);
-            }
-        });
+        Arrays.sort(intervals, (i1, i2) -> i1.start - i2.start);
 
         for (int i = 1; i < intervals.length; ++i) {
             if (intervals[i].start < intervals[i - 1].end) return false;

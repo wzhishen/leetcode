@@ -12,13 +12,12 @@ package solutions;
 public class BestTimeToBuyAndSellStock_121 {
     public int maxProfit(int[] prices) {
         if (prices == null) return 0;
+        int profit = 0;
         int minPrice = Integer.MAX_VALUE;
-        int maxProfit = 0;
         for (int price : prices) {
-            if (price < minPrice) minPrice = price;
-            int profit = price - minPrice;
-            if (profit > maxProfit) maxProfit = profit;
+            minPrice = Math.min(minPrice, price);
+            profit = Math.max(profit, price - minPrice);
         }
-        return maxProfit;
+        return profit;
     }
 }

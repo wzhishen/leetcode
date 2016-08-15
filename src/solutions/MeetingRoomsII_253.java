@@ -1,7 +1,6 @@
 package solutions;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 import datastructure.Interval;
@@ -35,13 +34,8 @@ public class MeetingRoomsII_253 {
     public int minMeetingRooms(Interval[] intervals) {
         if (intervals == null) return 0;
 
-        Arrays.sort(intervals, new Comparator<Interval>() {
-            public int compare(Interval i1, Interval i2) {
-                return i1.start - i2.start;
-            }
-        });
-
-        PriorityQueue<Integer> q = new PriorityQueue<Integer>();
+        Arrays.sort(intervals, (i1, i2) -> i1.start - i2.start);
+        PriorityQueue<Integer> q = new PriorityQueue<>();
         for (Interval i : intervals) {
             if (!q.isEmpty() && i.start >= q.peek()) q.poll();
             q.offer(i.end);

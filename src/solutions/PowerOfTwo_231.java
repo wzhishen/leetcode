@@ -18,4 +18,12 @@ public class PowerOfTwo_231 {
     public boolean isPowerOfTwo3(int n) {
         return n > 0 && Math.pow(2, 30) % n == 0;
     }
+
+    public boolean isPowerOfTwo4(int n) {
+        return n > 0 && (1 << 31) % n == 0;
+    }
+
+    public boolean isPowerOfTwo5(int n) {
+        return n > 0 && Integer.bitCount(n) == 1;
+    }
 }

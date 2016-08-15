@@ -44,7 +44,7 @@ public class FindKPairsWithSmallestSums_373 {
         if (a1.length == 0 || a2.length == 0) return res;
         int m = a1.length, n = a2.length;
 
-        PriorityQueue<Pair> q = new PriorityQueue<Pair>((p1, p2) -> (int)(p1.sum - p2.sum));
+        PriorityQueue<Pair> q = new PriorityQueue<Pair>((p1, p2) -> p1.sum - p2.sum);
         for (int i = 0; i < k && i < n; ++i) q.offer(new Pair(0, i, a1[0] + a2[i]));
 
         while (!q.isEmpty() && res.size() < k) {

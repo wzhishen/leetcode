@@ -1,7 +1,9 @@
 package solutions;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import datastructure.NestedInteger;
 
@@ -26,7 +28,24 @@ import datastructure.NestedInteger;
  * at depth 2, and one 6 at depth 1; 1*3 + 4*2 + 6*1 = 17)
  */
 public class NestedListWeightSumII_364 {
+    // My second version
     public int depthSumInverse(List<NestedInteger> nestedList) {
+        int sum = 0, cur = 0;
+        Queue<NestedInteger> q = new LinkedList<>();
+        for (NestedInteger i : nestedList) q.add(i);
+        while (!q.isEmpty()) {
+            int size = q.size(); 
+            for (int i = 0; i < size; ++i) {
+                NestedInteger n = q.remove();
+                if (n.isInteger()) cur +=  n.getInteger();
+                else q.addAll(n.getList());
+            }
+            sum += cur;
+        }
+        return sum;
+    }
+
+    public int depthSumInverse2(List<NestedInteger> nestedList) {
         int res = 0; // weighted sum
         int sum = 0; // unweighted sum
         while (!nestedList.isEmpty()) {
@@ -45,7 +64,7 @@ public class NestedListWeightSumII_364 {
     }
 
     // Naive
-    public int depthSumInverse2(List<NestedInteger> nestedList) {
+    public int depthSumInverse3(List<NestedInteger> nestedList) {
         getDepth(nestedList, 1);
         return traverse(nestedList, depth);
     }

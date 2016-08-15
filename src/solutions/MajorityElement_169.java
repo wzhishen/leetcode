@@ -14,11 +14,11 @@ public class MajorityElement_169 {
         int result = 0;
         int cnt = 0;
         for (int n : nums) {
-            if (cnt == 0) {
+            if (n == result) {
+                ++cnt;
+            } else if (cnt == 0) {
                 result = n;
                 cnt = 1;
-            } else if (n == result) {
-                ++cnt;
             } else {
                 --cnt;
             }

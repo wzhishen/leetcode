@@ -1,7 +1,6 @@
 package solutions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,7 +32,6 @@ public class GroupShiftedStrings_249 {
         List<List<String>> res = new ArrayList<List<String>>();
         if (strings == null) return res;
 
-        Arrays.sort(strings);
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
         for (String s : strings) {
             String key = getKey(s);

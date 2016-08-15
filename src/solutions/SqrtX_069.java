@@ -28,7 +28,7 @@ public class SqrtX_069 {
     public int mySqrt2(int x) {
         long low = 1, high = x;
         while (low <= high) {
-            long mid = low + (high - low) / 2;
+            long mid = (high + low) / 2; // won't overflow
             if (mid * mid <= x) low = mid + 1;
             else high = mid - 1;
         }

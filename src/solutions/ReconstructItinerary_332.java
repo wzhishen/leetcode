@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/reconstruct-itinerary/
@@ -66,4 +67,18 @@ public class ReconstructItinerary_332 {
 
     // Optimal: Eulerian path
     // Ref: http://bookshadow.com/weblog/2016/02/05/leetcode-reconstruct-itinerary/
+    public List<String> findItinerary2(String[][] tickets) {
+        HashMap<String, PriorityQueue<String>> graph = new HashMap<>();
+        for (String[] t : tickets) graph.computeIfAbsent(t[0], k -> new PriorityQueue<>()).offer(t[1]);
+        List<String> res = new ArrayList<>();
+        find(res, graph, "JFK");
+        return res;
+    }
+
+    private void find(List<String> res, HashMap<String, PriorityQueue<String>> graph, String from) {
+        while (graph.containsKey(from) && !graph.get(from).isEmpty()) {
+            find(res, graph, graph.get(from).poll());
+        }
+        res.add(0, from);
+    }
 }

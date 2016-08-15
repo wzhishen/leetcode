@@ -36,4 +36,28 @@ public class LowestCommonAncestorOfABinaryTree_236 {
             return r;
         }
     }
+
+    // Follow up: what if p, q may not be in the same tree?
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+        count(root, p, q);
+        return cnt != 2 ? null : helper(root, p, q);
+    }
+
+    int cnt = 0;
+    private void count(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) return;
+        if (root == p) ++cnt;
+        if (root == q) ++cnt;
+        count(root.left, p, q);
+        count(root.right, p, q);
+    }
+
+    private TreeNode helper(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) return root;
+        TreeNode left = helper(root.left, p, q);
+        TreeNode right = helper(root.right, p, q);
+        if (left != null && right != null) return root;
+        else if (left != null) return left;
+        else return right;
+    }
 }

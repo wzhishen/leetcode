@@ -13,6 +13,20 @@ public class DivideTwoIntegers_029 {
      *          = divisor * (a_0*2^0 + a_1*2^1 + a_2*2^2 + ... + a_n*2^n) where a_i = 0 or 1
      * So instead of counting divisor linearly we can count it logarithmically.
      *
+     * count linearly:
+     * Iteration 1, dividend -= divisor
+     * Iteration 2, dividend -= divisor
+     * ...
+     * Iteration N, dividend -= divisor
+     * So time complexity is O(N) where N = dividend / divisor
+     *
+     * count logarithmically:
+     * Iteration 1, dividend -= divisor * a_n*2^n
+     * Iteration 2, dividend -= divisor * a_n-1*2^(n-1)
+     * ...
+     * Iteration X, dividend -= divisor * a_0*2^0
+     * So time complexity is X = O(log N) where N = dividend / divisor
+     *
      * https://leetcode.com/discuss/38997/detailed-explained-8ms-c-solution
      */
     public int divide(int dividend, int divisor) {

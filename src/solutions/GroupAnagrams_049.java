@@ -2,7 +2,6 @@ package solutions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,7 +28,6 @@ public class GroupAnagrams_049 {
         List<List<String>> result = new ArrayList<List<String>>();
         if (strs == null) return result;
 
-        Arrays.sort(strs);
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
         for (String s : strs) {
             char[] chars = s.toCharArray();
