@@ -44,4 +44,22 @@ public class ValidPalindrome_125 {
         return ch1 == ch2 || isLetter(ch1) && isLetter(ch2) &&
             Math.abs(ch1 - ch2) == Math.abs('a' - 'A');
     }
+
+    // my 2nd version
+    public boolean isPalindrome2(String s) {
+        if (s == null) return true;
+        s = s.trim().toLowerCase();
+        int i = 0, j = s.length() - 1;
+        while (i < j) {
+            while (i < j && !isAlnum(s.charAt(i))) ++i;
+            while (i < j && !isAlnum(s.charAt(j))) --j;
+            if (i == j) return true;
+            if (s.charAt(i++) != s.charAt(j--)) return false;
+        }
+        return true;
+    }
+
+    private boolean isAlnum(char ch) {
+        return '0' <= ch && ch <= '9' || 'a' <= ch && ch <= 'z';
+    }
 }

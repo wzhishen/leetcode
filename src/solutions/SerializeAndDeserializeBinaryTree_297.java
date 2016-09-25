@@ -1,5 +1,8 @@
 package solutions;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 import datastructure.TreeNode;
 
 /**
@@ -50,29 +53,15 @@ public class SerializeAndDeserializeBinaryTree_297 {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        return deserialize(new Tokenizer(data));
+        return deserialize(new LinkedList<>(Arrays.asList(data.split(","))));
     }
 
-    private TreeNode deserialize(Tokenizer t) {
-        if (!t.hasNext()) return null;
-        String token = t.next();
+    private TreeNode deserialize(LinkedList<String> list) {
+        String token = list.remove();
         if (token.equals("#")) return null;
         TreeNode n = new TreeNode(Integer.parseInt(token));
-        n.left = deserialize(t);
-        n.right = deserialize(t);
+        n.left = deserialize(list);
+        n.right = deserialize(list);
         return n;
-    }
-
-    class Tokenizer {
-        String[] tokens; int p;
-        public Tokenizer(String s) {
-            tokens = s.split(","); p = 0;
-        }
-        public boolean hasNext() {
-            return p < tokens.length;
-        }
-        public String next() {
-            return tokens[p++];
-        }
     }
 }

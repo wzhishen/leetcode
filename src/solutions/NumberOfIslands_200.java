@@ -24,32 +24,25 @@ package solutions;
  */
 public class NumberOfIslands_200 {
     public int numIslands(char[][] grid) {
-        if (grid == null) return -1;
+        if (grid == null) return 0;
+
         int cnt = 0;
         for (int i = 0; i < grid.length; ++i) {
             for (int j = 0; j < grid[0].length; ++j) {
-                if (isIsland(grid, i, j)) ++cnt;
+                if (grid[i][j] == '1') {
+                    ++cnt;
+                    destroy(grid, i, j);
+                }
             }
         }
         return cnt;
     }
-
-    private boolean isIsland(char[][] grid, int i, int j) {
-        if (grid[i][j] == '1') {
-            destroy(grid, i, j);
-            return true;
-        }
-        return false;
-    }
-
     private void destroy(char[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1) return;
-        if (grid[i][j] == '1') {
-            grid[i][j] = '0';
-            destroy(grid, i - 1, j);
-            destroy(grid, i + 1, j);
-            destroy(grid, i, j - 1);
-            destroy(grid, i, j + 1);
-        }
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0') return;
+        grid[i][j] = '0';
+        destroy(grid, i - 1, j);
+        destroy(grid, i + 1, j);
+        destroy(grid, i, j - 1);
+        destroy(grid, i, j + 1);
     }
 }

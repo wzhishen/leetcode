@@ -64,7 +64,7 @@ public class ShortestDistanceFromAllBuildings_317 {
         int minDist = Integer.MAX_VALUE;
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
-                if (nums[i][j] == buildingCnt) minDist = Math.min(minDist, dist[i][j]);
+                if (grid[i][j] == 0 && nums[i][j] == buildingCnt) minDist = Math.min(minDist, dist[i][j]);
             }
         }
         return minDist == Integer.MAX_VALUE ? -1 : minDist;

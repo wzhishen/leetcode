@@ -40,7 +40,7 @@ public class ReadNCharactersGivenRead4II_158 /* extends Reader4 */ {
             int resLen = read4(res);
             int len = Math.min(resLen, n - i);
             // normal copy
-            copy(buf, res, i, 0, len);
+            for (int k = 0; k < len; ++k) buf[i + k] = res[k];
 
             // buffer any remaining chars to a queue so won't miss them upon next read
             if (len == n - i) {
@@ -51,10 +51,6 @@ public class ReadNCharactersGivenRead4II_158 /* extends Reader4 */ {
             if (resLen < 4) return i + len;
         }
         return n;
-    }
-
-    private void copy(char[] des, char[] src, int i, int j, int len) {
-        for (int k = 0; k < len; ++k) des[i + k] = src[j + k];
     }
 
     /* in class Reader4 */

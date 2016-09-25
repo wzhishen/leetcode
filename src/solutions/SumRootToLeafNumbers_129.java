@@ -22,10 +22,10 @@ public class SumRootToLeafNumbers_129 {
         return sumNumbers(root, 0);
     }
 
-    private int sumNumbers(TreeNode root, int sum) {
-        if (root == null) return 0;
-        int currSum = sum * 10 + root.val;
-        if (root.left == null && root.right == null) return currSum;
-        return sumNumbers(root.left, currSum) + sumNumbers(root.right, currSum);
+    private int sumNumbers(TreeNode n, int sum) {
+        if (n == null) return 0;
+        sum = sum * 10 + n.val;
+        if (n.left == null && n.right == null) return sum;
+        return sumNumbers(n.left, sum) + sumNumbers(n.right, sum);
     }
 }

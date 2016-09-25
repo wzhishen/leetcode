@@ -37,7 +37,7 @@ public class WordLadderII_126 {
         HashMap<String, List<String>> backtrack = new HashMap<String, List<String>>();
         List<List<String>> result = new LinkedList<List<String>>();
         q.add(beginWord);
-        distance.put(beginWord, 0);
+        distance.put(beginWord, 1);
         while (!q.isEmpty()) {
             String curr = q.remove();
             for (String next : expand(curr, wordList)) {

@@ -52,8 +52,4 @@ public class SearchForARange_034 {
         }
         return result;
     }
-    public static void main(String...aa) {
-        String[]a= "1,2,3,4,".split(",");
-        for (String n:a)System.out.println("*:"+n);
-    }
 }

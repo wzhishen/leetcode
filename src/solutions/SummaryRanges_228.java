@@ -20,9 +20,9 @@ public class SummaryRanges_228 {
                 ++i;
             }
             if (prev == nums[i]) {
-                result.add("" + prev);
+                result.add(prev + "");
             } else {
-                result.add("" + prev + "->" + nums[i]);
+                result.add(prev + "->" + nums[i]);
             }
         }
         return result;

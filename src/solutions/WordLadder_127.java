@@ -58,18 +58,18 @@ public class WordLadder_127 {
         Set<String> visited = new HashSet<String>();
         q.add(beginWord);
         visited.add(beginWord);
-        int length = 1;
+        int length = 0;
         while (!q.isEmpty()) {
             ++length;
             final int SIZE = q.size();
             for (int i = 0; i < SIZE; ++i) {
                 String word = q.remove();
+                if (word.equals(endWord)) {
+                    return length;
+                }
                 for (String next : expand(word, wordList)) {
                     if (!visited.contains(next)) {
                         visited.add(next);
-                        if (next.equals(endWord)) {
-                            return length;
-                        }
                         q.add(next);
                     }
                 }

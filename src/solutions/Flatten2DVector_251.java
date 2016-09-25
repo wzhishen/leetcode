@@ -1,5 +1,6 @@
 package solutions;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,41 +34,39 @@ import java.util.List;
  */
 public class Flatten2DVector_251 {
 
-    public class Vector2D_2 implements Iterator<Integer> {
-        private int i = 0, j = 0;
-        private List<List<Integer>> vec2d;
+    public class Vector2D implements Iterator<Integer> {
+        private int x, y;
+        private List<List<Integer>> vec;
 
-        public Vector2D_2(List<List<Integer>> vec2d) {
-            if (vec2d == null) return;
-            this.vec2d = vec2d;
+        public Vector2D(List<List<Integer>> vec2d) {
+            vec = new ArrayList<>();
+            for (List<Integer> v : vec2d) {
+                if (!v.isEmpty()) vec.add(v);
+            }
         }
 
         @Override
         public Integer next() {
-            int val = vec2d.get(i).get(j);
-            ++j;
-            if (j == vec2d.get(i).size()) {
-                j = 0;
-                ++i;
+            int val = vec.get(x).get(y);
+            ++y;
+            if (y == vec.get(x).size()) {
+                ++x; y = 0;
             }
             return val;
         }
 
         @Override
         public boolean hasNext() {
-            while (i < vec2d.size() && vec2d.get(i).isEmpty()) {
-                ++i; j = 0;
-            }
-            return i < vec2d.size() && j < vec2d.get(i).size();
+            return x < vec.size() && y < vec.get(x).size();
         }
     }
 
     // Follow up
-    public class Vector2D implements Iterator<Integer> {
+    public class Vector2D_2 implements Iterator<Integer> {
         private Iterator<List<Integer>> iter;
         private Iterator<Integer> curr;
 
-        public Vector2D(List<List<Integer>> vec2d) {
+        public Vector2D_2(List<List<Integer>> vec2d) {
             if (vec2d == null) return;
             iter = vec2d.iterator();
         }

@@ -29,15 +29,11 @@ public class ReadNCharactersGivenRead4_157 /* extends Reader4 */ {
         for (int i = 0; i < n; i += 4) {
             int resLen = read4(res);
             int len = Math.min(resLen, n - i);
-            copy(buf, res, i, 0, len);
+            for (int k = 0; k < len; ++k) buf[i + k] = res[k];
             // reach EOF
             if (resLen < 4) return i + len;
         }
         return n;
-    }
-
-    private void copy(char[] des, char[] src, int i, int j, int len) {
-        for (int k = 0; k < len; ++k) des[i + k] = src[j + k];
     }
 
     /* in class Reader4 */

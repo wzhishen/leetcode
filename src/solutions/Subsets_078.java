@@ -57,13 +57,8 @@ public class Subsets_078 {
 
     private List<Integer> ConvertNumToSubset(int[] nums, int n) {
         List<Integer> subset = new ArrayList<Integer>();
-        int i = 0;
-        while (n != 0) {
-            if ((n & 1) == 1) {
-                subset.add(nums[i]);
-            }
-            ++i;
-            n >>>= 1;
+        for (int i = 0; i < nums.length; ++i) {
+            if ((n & 1 << i) != 0) subset.add(nums[i]);
         }
         return subset;
     }

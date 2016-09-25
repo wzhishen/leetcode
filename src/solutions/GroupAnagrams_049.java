@@ -19,9 +19,7 @@ import java.util.List;
  * ]
  *
  * Note:
- * 1. For the return value, each inner list's elements must follow
- * the lexicographic order.
- * 2. All inputs will be in lower-case.
+ * All inputs will be in lower-case.
  */
 public class GroupAnagrams_049 {
     public List<List<String>> groupAnagrams(String[] strs) {
