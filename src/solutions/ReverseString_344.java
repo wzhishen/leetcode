@@ -25,8 +25,7 @@ public class ReverseString_344 {
     }
 
     public String reverseString2(String s) {
-        return s == null ? null :
-               s.length() <= 1 ? s :
-               reverseString(s.substring(s.length() / 2)) + reverseString(s.substring(0, s.length() / 2));
+        return s == null || s.length() <= 1 ? s :
+        reverseString2(s.substring(s.length() / 2)) + reverseString2(s.substring(0, s.length() / 2));
     }
 }

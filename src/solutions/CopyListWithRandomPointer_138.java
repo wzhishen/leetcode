@@ -10,6 +10,10 @@ import datastructure.RandomListNode;
  * Return a deep copy of the list.
  */
 public class CopyListWithRandomPointer_138 {
+    /*
+     * There is a good visual explanation:
+     * http://fisherlei.blogspot.com/2013/11/leetcode-copy-list-with-random-pointer.html
+     */
     public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null) return null;
 

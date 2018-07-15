@@ -34,6 +34,13 @@ import java.util.HashMap;
  */
 public class UniqueWordAbbreviation_288 {
 
+    /**
+     * More test cases that clarify the requirement:
+     * dictionary = [ "deer" ], isUnique("deer") -> true
+     * dictionary = [ "deer", "deer" ], isUnique("deer") -> true
+     * dictionary = [ "deer", "deer" ], isUnique("door") -> false
+     * dictionary = [ "deer", "door" ], isUnique("deer") -> false, isUnique("door") -> false
+     */
     public class ValidWordAbbr {
         HashMap<String, String> map = new HashMap<String, String>();
 
@@ -43,7 +50,7 @@ public class UniqueWordAbbreviation_288 {
             for (String word : dictionary) {
                 String abbr = compress(word);
                 if (map.containsKey(abbr)) {
-                    // use null to denote a duplicate
+                    // Use null to denote an abbreviation that must already be not unique.
                     if (!word.equals(map.get(abbr))) map.put(abbr, null);
                 } else {
                     map.put(abbr, word);

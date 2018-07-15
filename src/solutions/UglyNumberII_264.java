@@ -1,6 +1,8 @@
 package solutions;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -40,7 +42,7 @@ public class UglyNumberII_264 {
         return ugly[n - 1];
     }
 
-    // O(n) time, O(3n) space
+    // Naive: O(n) time, O(3n) space
     public int nthUglyNumber2(int n) {
         Queue<Long> q2 = new LinkedList<Long>();
         Queue<Long> q3 = new LinkedList<Long>();
@@ -67,5 +69,22 @@ public class UglyNumberII_264 {
             }
         }
         return (int) num;
+    }
+
+    // Naive (neater but less space efficient): O(n) time, O(3n) space
+    public int nthUglyNumber3(int n) {
+        int min = 1;
+        Queue<Integer> q2 = new LinkedList<>(), q3 = new LinkedList<>(), q5 = new LinkedList<>();
+        q2.offer(2); q3.offer(3); q5.offer(5);
+        for (int i = 1;i<n;++i) {
+            min = Math.min(q2.peek(), Math.min(q3.peek(), q5.peek()));
+            if (min == q2.peek()) q2.poll();
+            if (min == q3.peek()) q3.poll();
+            if (min == q5.peek()) q5.poll();
+            q2.offer(min * 2);
+            q3.offer(min * 3);
+            q5.offer(min * 5);
+        }
+        return min;
     }
 }

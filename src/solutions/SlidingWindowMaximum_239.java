@@ -39,9 +39,9 @@ import java.util.LinkedList;
 public class SlidingWindowMaximum_239 {
     /*
      * Approaches:
-     * 1. BF: O(nk) time, O(1) space
-     * 2. Heap: O(nlogk) time, O(k) space
-     * 3. Deque: O(n) time, at most O(k) space
+     * 1. BF: O(nk) time, O(1) space.
+     * 2. Hash heap: O(nlogk) time, O(k) space; normal heap: O(nk) time, since remove(Object) is O(n).
+     * 3. Deque: O(n) time, at most O(k) space.
      *
      * Use a monotonic queue.
      * Reference: https://leetcode.com/discuss/46594/clean-c-o-n-solution-using-a-deque

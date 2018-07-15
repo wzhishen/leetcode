@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class LongestIncreasingSubsequence_300 {
     /* DP: O(n^2) time, O(n) space
      * recurrence:
-     * dp[i] = max(dp[j] + 1) where 0<= j < i, nums[j] < nums[i]
+     * dp[i] = max(dp[j] + 1) where 0 <= j < i, nums[j] < nums[i]
      */
     public int lengthOfLIS(int[] nums) {
         if (nums == null) return 0;

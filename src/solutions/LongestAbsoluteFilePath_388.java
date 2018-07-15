@@ -34,8 +34,8 @@ import java.util.Stack;
  * absolute path to a file within our file system. For example, in the
  * second example above, the longest absolute path is "dir/subdir2/sub
  * subdir2/file2.ext", and its length is 32 (not including the double
- *
  * quotes).
+ *
  * Given a string representing the file system in the above format,
  * return the length of the longest absolute path to file in the abstracted
  * file system. If there is no file in the system, return 0.
