@@ -20,6 +20,7 @@ https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg
 
 Input: root = [1,2,2,3,3,null,null,4,4]
 Output: false
+
 Example 3:
 
 Input: root = []
