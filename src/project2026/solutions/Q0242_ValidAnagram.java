@@ -43,7 +43,7 @@ public class Q0242_ValidAnagram {
         }
         for (char ch : t.toCharArray()) {
             if (!map.containsKey(ch)) return false;
-            int cnt = map.getOrDefault(ch , 0) - 1;
+            int cnt = map.get(ch) - 1;
             if (cnt == 0) map.remove(ch);
             else map.put(ch, cnt);
         }
