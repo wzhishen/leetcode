@@ -40,10 +40,10 @@ word and prefix consist only of lowercase English letters.
 At most 3 * 104 calls in total will be made to insert, search, and startsWith.
 
  */
-public class Q0208ImplementTriePrefixTree /* Trie */ {
+public class Q0208_ImplementTriePrefixTree /* Trie */ {
     private Node root;
 
-    public Q0208ImplementTriePrefixTree() /* Trie */ {
+    public Q0208_ImplementTriePrefixTree() /* Trie */ {
         root = new Node('\0');
     }
 
