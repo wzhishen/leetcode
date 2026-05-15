@@ -41,7 +41,7 @@ p != q
 p and q will exist in the BST.
 
  */
-public class Q0235_LowestCommonAncestorOfABinaryTree {
+public class Q0235_LowestCommonAncestorOfABinarySearchTree {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) return null;
         if (p.val <= root.val && root.val <= q.val || q.val <= root.val && root.val <= p.val) return root;
