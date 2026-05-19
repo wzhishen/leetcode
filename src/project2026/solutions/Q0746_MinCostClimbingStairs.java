@@ -37,6 +37,7 @@ Constraints:
 
 2 <= cost.length <= 1000
 0 <= cost[i] <= 999
+
  */
 public class Q0746_MinCostClimbingStairs {
     // dp[i] means min cost so far ending at step i
